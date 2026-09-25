@@ -193,13 +193,24 @@ body.studying #toast.show{transform:translate(-50%,0)}
 .tabchev{flex:0 0 auto;font-size:1.4rem;color:var(--c);font-weight:300}
 
 /* Kortelių peržiūra (peek) + pažangos ratas, dviem stulpeliais */
-.dhub-main{display:grid;grid-template-columns:1fr;gap:1rem;margin-top:.2rem}
-@media (min-width:760px){.dhub-main{grid-template-columns:1.3fr .9fr;align-items:start}}
-.peekcard{cursor:pointer}
-.peeknav{display:flex;align-items:center;justify-content:center;gap:1rem;margin-top:.6rem}
-.peektoggles{display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;margin-top:.6rem;font-size:.88rem;color:var(--muted)}
-.chk{display:flex;align-items:center;gap:.4rem;cursor:pointer}
-.chk input{width:16px;height:16px}
+.staronly-row{margin:.6rem 0 .2rem}
+.dhub-main{display:grid;grid-template-columns:1fr;gap:1.2rem;margin-top:.9rem;align-items:start}
+@media (min-width:760px){.dhub-main{grid-template-columns:1.3fr .9fr}}
+.peekcol{display:flex;flex-direction:column;align-items:center;gap:.3rem;min-width:0}
+.peek-stack{--stackh:320px;--areah:236px;width:100%;max-width:400px;margin:0 auto}
+#peek-wrap{cursor:pointer}
+.peeknav{display:flex;align-items:center;justify-content:center;gap:1rem;margin-top:.5rem}
+.peektoggles{display:flex;gap:1.1rem;flex-wrap:wrap;justify-content:center;margin-top:.7rem}
+
+/* Perjungikliai (toggle switch), vietoj paprastų žymimųjų langelių */
+.toggle{display:inline-flex;align-items:center;gap:.5rem;cursor:pointer;font-size:.88rem;color:var(--muted);-webkit-user-select:none;user-select:none}
+.toggle-input{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none}
+.toggle-track{position:relative;flex:0 0 auto;width:36px;height:21px;border-radius:11px;background:var(--line);transition:background .18s ease}
+.toggle-thumb{position:absolute;top:2px;left:2px;width:17px;height:17px;border-radius:50%;background:var(--paper);box-shadow:0 1px 3px rgba(0,0,0,.35);transition:transform .18s ease}
+.toggle-input:checked + .toggle-track{background:var(--c)}
+.toggle-input:checked + .toggle-track .toggle-thumb{transform:translateX(15px)}
+.toggle-input:focus-visible + .toggle-track{outline:2px solid var(--c);outline-offset:2px}
+.toggle-text{color:var(--ink)}
 
 .progress-card{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:1rem}
 .progress-card h3{margin:0 0 .7rem;font-family:var(--serif);font-size:1.1rem}
@@ -227,11 +238,11 @@ body.studying #toast.show{transform:translate(-50%,0)}
 .tf-ptext{font-family:var(--serif);font-size:1.25rem;font-weight:700;overflow-wrap:anywhere}
 .tf-pimg{max-width:100%;max-height:150px;border-radius:8px;margin:0 auto .5rem;display:block;object-fit:contain}
 .tf-actions{display:flex;gap:.7rem;margin-top:1rem}
-.tf-actions .btn{flex:1;min-height:56px;font-size:1.05rem;border-width:2px}
-.tf-actions .true{border-color:var(--yes);color:var(--yes)}
-.tf-actions .false{border-color:var(--no);color:var(--no)}
-.tf-actions .true.picked{background:color-mix(in srgb,var(--yes) 16%,var(--paper))}
-.tf-actions .false.picked{background:color-mix(in srgb,var(--no) 16%,var(--paper))}
+.tf-actions .btn{flex:1;min-height:56px;font-size:1.05rem;font-weight:700;border-width:2px;border-color:var(--line);color:var(--ink)}
+.tf-actions .btn.correct{border-color:var(--yes);color:var(--yes);background:color-mix(in srgb,var(--yes) 16%,var(--paper))}
+.tf-actions .btn.wrong{border-color:var(--no);color:var(--no);background:color-mix(in srgb,var(--no) 16%,var(--paper))}
+.tf-actions .btn.dim{opacity:.45}
+.tf-actions .btn:disabled{cursor:default}
 .tf-reveal{margin-top:.9rem;padding:.7rem .9rem;border-radius:12px;background:var(--tint);text-align:center}
 .tf-reveal b{font-family:var(--serif);font-size:1.1rem}
 .settings{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:.9rem 1rem}
@@ -397,7 +408,36 @@ body.studying #toast.show{transform:translate(-50%,0)}
     <input id="deck-name" class="title-input" maxlength="60" aria-label="Kaladės pavadinimas">
     <p id="deck-meta" class="meta"></p>
 
-    <div id="deck-hub"></div>
+    <div class="staronly-row">
+      <label class="toggle"><input type="checkbox" class="toggle-input" id="staronly-toggle"><span class="toggle-track"><span class="toggle-thumb"></span></span><span class="toggle-text">★ Žaisti tik pažymėtas (<span id="staronly-count">0</span>)</span></label>
+    </div>
+
+    <div id="tabsrow"></div>
+
+    <div class="dhub-main">
+      <div class="peekcol">
+        <div class="stack peek-stack" id="peek-stackwrap">
+          <div class="wrap" id="peek-wrap" tabindex="0" role="button" aria-label="Kortelė. Bakstelėk, kad apverstum.">
+            <div class="card" id="peek-card">
+              <div class="face front" id="peek-face-front"><span class="tag" id="peek-tag-front"></span><div class="text"><div class="tin"><img class="cimg" id="peek-img-front" alt="" hidden><span id="peek-txt-front"></span></div></div></div>
+              <div class="face back" id="peek-face-back"><span class="tag" id="peek-tag-back"></span><div class="text"><div class="tin"><img class="cimg" id="peek-img-back" alt="" hidden><span id="peek-txt-back"></span></div></div></div>
+            </div>
+          </div>
+        </div>
+        <p class="hint" id="peek-hint">Bakstelėk, kad apverstum</p>
+        <div class="peeknav" id="peek-nav">
+          <button type="button" class="btn ghost small" id="peek-prev" aria-label="Ankstesnė kortelė">‹</button>
+          <span class="meta" id="peek-pos"></span>
+          <button type="button" class="btn ghost small" id="peek-next" aria-label="Kita kortelė">›</button>
+        </div>
+        <div class="peektoggles">
+          <label class="toggle"><input type="checkbox" class="toggle-input" id="peek-shuffle"><span class="toggle-track"><span class="toggle-thumb"></span></span><span class="toggle-text">Maišyti korteles</span></label>
+          <label class="toggle"><input type="checkbox" class="toggle-input" id="peek-firstans"><span class="toggle-track"><span class="toggle-thumb"></span></span><span class="toggle-text">Pirma atsakymas</span></label>
+        </div>
+        <div class="qcard" id="peek-empty" hidden><p class="meta" id="peek-empty-text"></p></div>
+      </div>
+      <div id="progress-panel"></div>
+    </div>
 
     <h2 id="cards-heading" class="sec">Kortelės</h2>
 
@@ -867,79 +907,113 @@ $('#file-import').addEventListener('change', async e => {
 
 /* ---------- Kortelių peržiūra kaladės lange (peek) ---------- */
 let peek = null;
+let starOnly = false;
+
+function effectiveCards(d) { return starOnly ? d.cards.filter(c => c.star) : d.cards; }
 
 function initPeek(d, shuffleOn, firstAnswer) {
-  peek = {
-    deckId: d.id,
-    order: shuffleOn ? shuffle(d.cards.map(c => c.id)) : d.cards.map(c => c.id),
-    i: 0, flipped: false, shuffleOn, firstAnswer
-  };
+  const pool = effectiveCards(d);
+  peek = { deckId: d.id, order: shuffleOn ? shuffle(pool.map(c => c.id)) : pool.map(c => c.id), i: 0, shuffleOn, firstAnswer };
 }
 
 function ensurePeek(d) {
   if (!peek || peek.deckId !== d.id) { initPeek(d, true, false); return; }
-  const ids = new Set(d.cards.map(c => c.id));
+  const pool = effectiveCards(d);
+  const ids = new Set(pool.map(c => c.id));
   peek.order = peek.order.filter(id => ids.has(id));
-  for (const c of d.cards) if (!peek.order.includes(c.id)) peek.order.push(c.id);
+  for (const c of pool) if (!peek.order.includes(c.id)) peek.order.push(c.id);
   if (peek.i >= peek.order.length) peek.i = Math.max(0, peek.order.length - 1);
+}
+
+function setPeekFace(side, text, img) {
+  const im = $('#peek-img-' + side), tx = $('#peek-txt-' + side);
+  tx.textContent = text || '';
+  tx.hidden = !text;
+  if (img) {
+    im.onload = () => fitText($('#peek-face-' + side + ' .text'));
+    im.src = img;
+    im.hidden = false;
+    im.classList.toggle('solo', !text);
+  } else {
+    im.onload = null;
+    im.removeAttribute('src');
+    im.hidden = true;
+  }
+}
+
+function fitPeek() {
+  document.querySelectorAll('#peek-wrap .text').forEach(fitText);
+}
+
+function resetPeekCard() {
+  const card = $('#peek-card'), wrap = $('#peek-wrap');
+  card.classList.add('no-anim');
+  card.classList.remove('flipped');
+  void wrap.offsetWidth;
+  card.classList.remove('no-anim');
+}
+
+function renderPeekCard() {
+  const d = deckById(currentDeckId);
+  if (!d) return;
+  ensurePeek(d);
+  const has = peek.order.length > 0;
+  $('#peek-stackwrap').hidden = !has;
+  $('#peek-hint').hidden = !has;
+  $('#peek-nav').hidden = !has;
+  $('#peek-empty').hidden = has;
+  if (!has) {
+    $('#peek-empty-text').textContent = starOnly ? 'Nėra pažymėtų kortelių.' : 'Kaladėje dar nėra kortelių. Pridėk jų žemiau.';
+    $('#peek-shuffle').checked = peek.shuffleOn;
+    $('#peek-firstans').checked = peek.firstAnswer;
+    return;
+  }
+  const c = d.cards.find(x => x.id === peek.order[peek.i]);
+  if (!c) return;
+  const front = peek.firstAnswer ? c.a : c.q, back = peek.firstAnswer ? c.q : c.a;
+  const frontImg = peek.firstAnswer ? c.ai : c.qi, backImg = peek.firstAnswer ? c.qi : c.ai;
+  setPeekFace('front', front, frontImg);
+  setPeekFace('back', back, backImg);
+  $('#peek-tag-front').textContent = peek.firstAnswer ? 'Atsakymas' : 'Sąvoka';
+  $('#peek-tag-back').textContent = peek.firstAnswer ? 'Sąvoka' : 'Atsakymas';
+  $('#peek-pos').textContent = `${peek.i + 1} / ${peek.order.length}`;
+  $('#peek-shuffle').checked = peek.shuffleOn;
+  $('#peek-firstans').checked = peek.firstAnswer;
+  resetPeekCard();
+  fitPeek();
+}
+
+function peekFlip() {
+  if (!peek || !peek.order.length) return;
+  $('#peek-card').classList.toggle('flipped');
 }
 
 function peekNav(dir) {
   if (!peek || !peek.order.length) return;
   peek.i = (peek.i + dir + peek.order.length) % peek.order.length;
-  peek.flipped = false;
-  renderHub();
+  renderPeekCard();
 }
 
-function peekFlip() {
-  if (!peek || !peek.order.length) return;
-  peek.flipped = !peek.flipped;
+$('#peek-wrap').addEventListener('click', peekFlip);
+$('#peek-wrap').addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); peekFlip(); } });
+$('#peek-prev').addEventListener('click', () => peekNav(-1));
+$('#peek-next').addEventListener('click', () => peekNav(1));
+$('#peek-shuffle').addEventListener('change', () => {
+  const d = deckById(currentDeckId);
+  if (!d) return;
+  initPeek(d, $('#peek-shuffle').checked, peek ? peek.firstAnswer : false);
+  renderPeekCard();
+});
+$('#peek-firstans').addEventListener('change', () => {
+  if (!peek) return;
+  peek.firstAnswer = $('#peek-firstans').checked;
+  renderPeekCard();
+});
+$('#staronly-toggle').addEventListener('change', () => {
+  starOnly = $('#staronly-toggle').checked;
   renderHub();
-}
-
-function peekToggleShuffle(d) {
-  const on = !peek.shuffleOn;
-  initPeek(d, on, peek.firstAnswer);
-  renderHub();
-}
-
-function peekToggleFirstAnswer() {
-  peek.firstAnswer = !peek.firstAnswer;
-  peek.flipped = false;
-  renderHub();
-}
-
-function renderPeekBlock(d) {
-  ensurePeek(d);
-  if (!peek.order.length) {
-    return h('div', { class: 'qcard' }, h('p', { class: 'meta' }, 'Kaladėje dar nėra kortelių. Pridėk jų žemiau.'));
-  }
-  const c = d.cards.find(x => x.id === peek.order[peek.i]);
-  if (!c) return null;
-  const front = peek.firstAnswer ? c.a : c.q, back = peek.firstAnswer ? c.q : c.a;
-  const frontImg = peek.firstAnswer ? c.ai : c.qi, backImg = peek.firstAnswer ? c.qi : c.ai;
-  const showBack = peek.flipped;
-  const label = showBack ? (peek.firstAnswer ? 'Sąvoka' : 'Atsakymas') : (peek.firstAnswer ? 'Atsakymas' : 'Sąvoka');
-  const text = showBack ? back : front, img = showBack ? backImg : frontImg;
-  return h('div', {},
-    h('div', {
-      class: 'qcard peekcard', onclick: peekFlip, role: 'button', tabindex: '0',
-      'aria-label': 'Kortelė. Bakstelėk, kad apverstum.',
-      onkeydown: e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); peekFlip(); } }
-    },
-      h('div', { class: 'qtag' }, label),
-      h('div', { class: 'qrule' }),
-      imgEl(img, 'qimg'),
-      text ? h('div', { class: 'qtext', 'data-size': sizeOf(text) }, text) : null,
-      h('div', { class: 'hint' }, 'Bakstelėk, kad apverstum')),
-    h('div', { class: 'peeknav' },
-      h('button', { type: 'button', class: 'btn ghost small', 'aria-label': 'Ankstesnė kortelė', onclick: () => peekNav(-1) }, '‹'),
-      h('span', { class: 'meta' }, `${peek.i + 1} / ${peek.order.length}`),
-      h('button', { type: 'button', class: 'btn ghost small', 'aria-label': 'Kita kortelė', onclick: () => peekNav(1) }, '›')),
-    h('div', { class: 'peektoggles' },
-      h('label', { class: 'chk' }, h('input', { type: 'checkbox', checked: peek.shuffleOn, onchange: () => peekToggleShuffle(d) }), 'Maišyti korteles'),
-      h('label', { class: 'chk' }, h('input', { type: 'checkbox', checked: peek.firstAnswer, onchange: peekToggleFirstAnswer }), 'Pirma atsakymas')));
-}
+  renderCardList();
+});
 
 /* ---------- Kaladės redagavimas ---------- */
 function renderDeck() {
@@ -972,17 +1046,20 @@ function tabtile(icon, title, subtitle, opts) {
 }
 
 function renderTabsRow(d) {
-  const n = d.cards.length;
+  const pool = effectiveCards(d);
+  const n = pool.length;
   const s = activeSession(d.id);
-  const writable = d.cards.filter(c => (c.a || '').trim());
+  const writable = pool.filter(c => (c.a || '').trim());
+  const ids = starOnly ? pool.map(c => c.id) : undefined;
   const scrollToForm = () => { $('#card-form').scrollIntoView({ behavior: 'smooth', block: 'center' }); $('#f-q').focus(); };
+  const emptyLabel = starOnly ? 'Nėra pažymėtų' : 'Pridėk kortelių';
   return h('div', { class: 'tabsrow' },
-    tabtile('▤', 'Kortelės', !n ? 'Pridėk kortelių' : (s ? `Tęsti mokymąsi (${s.queue.length + s.missed.length})` : 'Pradėti mokymąsi'),
-      { primary: true, disabled: !n, onclick: () => (n ? (s ? go('study') : begin(d.id)) : scrollToForm) }),
-    tabtile('✎', 'Praktika raštu', 'Atsakyk iš atminties', { disabled: !writable.length, onclick: () => startWrite(d.id) }),
-    tabtile('☑', 'Testas', 'Pasitikrink žinias', { disabled: n < 2, onclick: () => startTest(d.id) }),
-    tabtile('▦', 'Sujunk poras', 'Blokeliai ir laikmatis', { disabled: n < 2, onclick: () => startMatch(d.id) }),
-    tabtile('✓', 'Tiesa ar melas', 'Atpažink teisingą teiginį', { disabled: n < 2, onclick: () => startTF(d.id) }));
+    tabtile('▤', 'Kortelės', !n ? emptyLabel : (s ? `Tęsti mokymąsi (${s.queue.length + s.missed.length})` : 'Pradėti mokymąsi'),
+      { primary: true, disabled: !n, onclick: () => (n ? (s ? go('study') : begin(d.id, ids)) : scrollToForm) }),
+    tabtile('✎', 'Praktika raštu', 'Atsakyk iš atminties', { disabled: !writable.length, onclick: () => startWrite(d.id, ids) }),
+    tabtile('☑', 'Testas', 'Pasitikrink žinias', { disabled: n < 2, onclick: () => startTest(d.id, ids) }),
+    tabtile('▦', 'Sujunk poras', 'Blokeliai ir laikmatis', { disabled: n < 2, onclick: () => startMatch(d.id, ids) }),
+    tabtile('✓', 'Tiesa ar melas', 'Atpažink teisingą teiginį', { disabled: n < 2, onclick: () => startTF(d.id, ids) }));
 }
 
 // Apskrito rodiklio SVG žymima procentine reikšme (statinė, saugu naudoti innerHTML)
@@ -1023,9 +1100,14 @@ function renderHub() {
   const d = deckById(currentDeckId);
   if (!d) return;
   updateDeckMeta(d);
-  $('#deck-hub').replaceChildren(
-    renderTabsRow(d),
-    h('div', { class: 'dhub-main' }, renderPeekBlock(d), renderProgressPanel(d)));
+  const starred = d.cards.filter(c => c.star).length;
+  if (!starred && starOnly) { starOnly = false; }
+  $('#staronly-toggle').checked = starOnly;
+  $('#staronly-toggle').disabled = !starred;
+  $('#staronly-count').textContent = String(starred);
+  $('#tabsrow').replaceChildren(renderTabsRow(d));
+  $('#progress-panel').replaceChildren(renderProgressPanel(d));
+  renderPeekCard();
 }
 
 function renderSwatches() {
@@ -1038,12 +1120,10 @@ function renderSwatches() {
   }));
 }
 
-let starFilter = false;
-
 function renderCardTools(d) {
   const starred = d.cards.filter(c => c.star).length;
   $('#card-tools').replaceChildren(
-    h('button', { type: 'button', class: 'btn ghost small' + (starFilter ? ' primary' : ''), onclick: () => { starFilter = !starFilter; renderCardList(); } }, `★ Pažymėtos (${starred})`),
+    h('button', { type: 'button', class: 'btn ghost small' + (starOnly ? ' primary' : ''), onclick: () => { starOnly = !starOnly; renderHub(); renderCardList(); } }, `★ Pažymėtos (${starred})`),
     h('button', { type: 'button', class: 'btn small', onclick: () => { $('#f-q').scrollIntoView({ behavior: 'smooth', block: 'center' }); $('#f-q').focus(); } }, '+ Pridėti kortelę'));
 }
 
@@ -1063,7 +1143,7 @@ function renderCardList() {
   renderCardTools(d);
   const ul = $('#card-list');
   ul.replaceChildren();
-  const list = starFilter ? d.cards.filter(c => c.star) : d.cards;
+  const list = starOnly ? d.cards.filter(c => c.star) : d.cards;
   if (!d.cards.length) {
     ul.append(h('li', { class: 'empty' }, 'Kaladėje dar nėra kortelių. Įrašyk pirmąją aukščiau.'));
     return;
@@ -1273,8 +1353,8 @@ function fitAll() {
   if (current !== 'study') return;
   document.querySelectorAll('#view-study .text').forEach(fitText);
 }
-window.addEventListener('resize', fitAll);
-window.addEventListener('orientationchange', () => setTimeout(fitAll, 250));
+window.addEventListener('resize', () => { fitAll(); if (current === 'deck') fitPeek(); });
+window.addEventListener('orientationchange', () => setTimeout(() => { fitAll(); if (current === 'deck') fitPeek(); }, 250));
 
 function resetCard() {
   card.classList.add('no-anim');
@@ -2079,14 +2159,14 @@ function renderTF() {
       c.q ? h('div', { class: 'qtext', 'data-size': sizeOf(c.q) }, c.q) : null,
       h('div', { class: 'tf-prop' }, imgEl(prop.img, 'tf-pimg'), prop.text ? h('div', { class: 'tf-ptext' }, prop.text) : null)),
     !checked ? h('div', { class: 'tf-actions' },
-      h('button', { type: 'button', class: 'btn true', onclick: () => pickTF(true) }, 'Teisybė'),
-      h('button', { type: 'button', class: 'btn false', onclick: () => pickTF(false) }, 'Melas')) : null,
+      h('button', { type: 'button', class: 'btn', onclick: () => pickTF(true) }, 'Teisybė'),
+      h('button', { type: 'button', class: 'btn', onclick: () => pickTF(false) }, 'Melas')) : null,
     checked ? h('div', { class: 'tf-actions' },
-      h('button', { type: 'button', class: 'btn true' + (t.picked === true ? ' picked' : ''), disabled: true }, 'Teisybė'),
-      h('button', { type: 'button', class: 'btn false' + (t.picked === false ? ' picked' : ''), disabled: true }, 'Melas')) : null,
-    checked ? h('div', { class: 'tf-reveal' },
-      h('span', { class: 'meta' }, t.picked === prop.isTrue ? 'Teisingai! ' : 'Neteisingai. '),
-      h('b', {}, prop.isTrue ? 'Tai buvo teisybė.' : `Klaidinga — teisingas atsakymas: ${c.a || ''}`),
+      h('button', { type: 'button', class: 'btn' + (prop.isTrue ? ' correct' : (t.picked === true ? ' wrong' : ' dim')), disabled: true }, 'Teisybė'),
+      h('button', { type: 'button', class: 'btn' + (!prop.isTrue ? ' correct' : (t.picked === false ? ' wrong' : ' dim')), disabled: true }, 'Melas')) : null,
+    checked ? h('div', { class: 'tf-reveal' + (t.picked === prop.isTrue ? ' ok' : ' bad') },
+      h('span', {}, t.picked === prop.isTrue ? 'Teisingai! ' : 'Neteisingai. '),
+      h('b', {}, prop.isTrue ? 'Tai buvo teisybė.' : `Teisingas atsakymas: ${c.a || ''}`),
       !prop.isTrue ? imgEl(c.ai) : null) : null,
     checked ? h('button', { type: 'button', class: 'btn primary', onclick: nextTF }, last ? 'Rodyti rezultatą' : 'Toliau') : null
   ].filter(Boolean));
