@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="lt">
+<html lang="lt" data-theme="light">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
-<meta name="theme-color" content="#E8EDF3">
+<meta name="theme-color" content="#FFFFFF">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Kortelės">
@@ -13,21 +13,41 @@
 <title>Kortelės – mokymosi kortelės</title>
 <style>
 :root{
-  --bg:#E8EDF3; --ink:#16202E; --muted:#5B6879; --paper:#FFFFFF; --paper-back:#EAF0FF;
-  --line:#C9D3DF; --red:#D8443A; --blue:#2B5BD7; --yes:#178A5F; --no:#D8443A; --warn:#9A6B00;
+  --bg:#FFFFFF; --ink:#16202E; --muted:#5B6879; --paper:#FFFFFF; --paper-back:#EAF0FF;
+  --line:#D6DCE3; --red:#D8443A; --blue:#2B5BD7; --yes:#178A5F; --no:#D8443A; --warn:#9A6B00;
   --accent:#2B5BD7; --on-accent:#FFFFFF; --shadow:rgba(20,32,50,.35);
   --ui:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",sans-serif;
   --serif:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
 }
 @media (prefers-color-scheme:dark){
-  :root{
+  :root:not([data-theme]){
     --bg:#131922; --ink:#E7ECF3; --muted:#93A0B3; --paper:#212B38; --paper-back:#1F2C4A;
     --line:#33404F; --red:#F0645A; --blue:#8FADFF; --yes:#3CC08D; --no:#F0645A; --warn:#E3B341;
     --accent:#7C9DFF; --on-accent:#0E1420; --shadow:rgba(0,0,0,.6);
   }
 }
+/* Rankiniu būdu pasirinkta tema visada nustelbia sistemos nustatymą */
+:root[data-theme="light"]{
+  --bg:#FFFFFF; --ink:#16202E; --muted:#5B6879; --paper:#FFFFFF; --paper-back:#EAF0FF;
+  --line:#D6DCE3; --red:#D8443A; --blue:#2B5BD7; --yes:#178A5F; --no:#D8443A; --warn:#9A6B00;
+  --accent:#2B5BD7; --on-accent:#FFFFFF; --shadow:rgba(20,32,50,.35);
+}
+:root[data-theme="dark"]{
+  --bg:#131922; --ink:#E7ECF3; --muted:#93A0B3; --paper:#212B38; --paper-back:#1F2C4A;
+  --line:#33404F; --red:#F0645A; --blue:#8FADFF; --yes:#3CC08D; --no:#F0645A; --warn:#E3B341;
+  --accent:#7C9DFF; --on-accent:#0E1420; --shadow:rgba(0,0,0,.6);
+}
+:root[data-theme="gray"]{
+  --bg:#1C1C1E; --ink:#EDEDED; --muted:#9C9CA1; --paper:#2C2C2E; --paper-back:#333336;
+  --line:#3D3D40; --red:#FF6B5E; --blue:#8FADFF; --yes:#43C08D; --no:#FF6B5E; --warn:#E3B341;
+  --accent:#8B8FFF; --on-accent:#141416; --shadow:rgba(0,0,0,.6);
+}
 *{box-sizing:border-box}
 [hidden]{display:none!important}
+:root{color-scheme:light}
+:root[data-theme="dark"],:root[data-theme="gray"]{color-scheme:dark}
+@media (prefers-color-scheme:dark){:root:not([data-theme]){color-scheme:dark}}
+html{background:var(--bg)}
 html,body{margin:0;touch-action:pan-x pan-y;-webkit-text-size-adjust:100%}
 button,label,summary,[role=button]{touch-action:manipulation}
 body{background:var(--bg);color:var(--ink);font-family:var(--ui);line-height:1.45;-webkit-tap-highlight-color:transparent}
@@ -55,7 +75,16 @@ input[type=text],.title-input,textarea{width:100%;background:var(--paper);border
 input[type=text]{flex:1;min-width:0;width:auto}
 textarea{resize:vertical;display:block;margin-top:.3rem}
 
-.masthead{margin:.6rem 0 1.6rem}
+.masthead{display:flex;justify-content:space-between;align-items:flex-start;gap:.8rem;margin:.6rem 0 1.6rem}
+.masthead .mast-text{min-width:0}
+.theme-picker{position:relative;flex:0 0 auto}
+.theme-btn{width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:var(--paper);display:flex;align-items:center;justify-content:center;font-size:1.2rem;cursor:pointer;color:var(--ink)}
+.theme-btn:hover{border-color:var(--muted)}
+.theme-menu{position:absolute;right:0;top:calc(100% + .4rem);background:var(--paper);border:1px solid var(--line);border-radius:12px;box-shadow:0 14px 30px -14px var(--shadow);padding:.4rem;display:grid;gap:.2rem;min-width:170px;z-index:10}
+.theme-opt{display:flex;align-items:center;gap:.6rem;width:100%;padding:.5rem .6rem;border-radius:8px;border:0;background:none;cursor:pointer;font:inherit;color:var(--ink);text-align:left}
+.theme-opt:hover{background:var(--tint,color-mix(in srgb,var(--ink) 8%,transparent))}
+.theme-opt[aria-checked="true"]{background:color-mix(in srgb,var(--accent) 14%,transparent);font-weight:700}
+.theme-swatch{width:20px;height:20px;border-radius:50%;border:1px solid var(--line);flex:0 0 auto}
 #new-deck{margin-bottom:1.2rem}
 .meta{color:var(--muted);font-size:.92rem}
 .note{background:var(--paper);border:1px solid var(--line);border-left:4px solid var(--blue);border-radius:10px;padding:.7rem .9rem;margin:.4rem 0 1rem}
@@ -148,7 +177,9 @@ body.studying #toast.show{transform:translate(-50%,0)}
 
 /* Kaladžių plytelės */
 .hued{--c:hsl(var(--h) 62% 42%);--tint:hsl(var(--h) 75% 93%);--on-c:#fff}
-@media (prefers-color-scheme:dark){.hued{--c:hsl(var(--h) 72% 68%);--tint:hsl(var(--h) 32% 19%);--on-c:#10151d}}
+@media (prefers-color-scheme:dark){:root:not([data-theme]) .hued{--c:hsl(var(--h) 72% 68%);--tint:hsl(var(--h) 32% 19%);--on-c:#10151d}}
+:root[data-theme="light"] .hued{--c:hsl(var(--h) 62% 42%);--tint:hsl(var(--h) 75% 93%);--on-c:#fff}
+:root[data-theme="dark"] .hued,:root[data-theme="gray"] .hued{--c:hsl(var(--h) 72% 68%);--tint:hsl(var(--h) 32% 19%);--on-c:#10151d}
 .decks{display:grid;gap:1.3rem;grid-template-columns:repeat(auto-fill,minmax(285px,1fr));margin-top:1.4rem}
 .deck{position:relative;background:var(--paper);border-radius:14px;overflow:hidden;
   box-shadow:0 1px 0 rgba(0,0,0,.05),0 12px 26px -16px var(--shadow)}
@@ -245,6 +276,10 @@ body.studying #toast.show{transform:translate(-50%,0)}
 .tf-actions .btn:disabled{cursor:default}
 .tf-reveal{margin-top:.9rem;padding:.7rem .9rem;border-radius:12px;background:var(--tint);text-align:center}
 .tf-reveal b{font-family:var(--serif);font-size:1.1rem}
+.tf-reveal.ok{color:var(--yes)}
+.tf-reveal.ok b{color:var(--yes)}
+.tf-reveal.bad{color:var(--no)}
+.tf-reveal.bad b{color:var(--no)}
 .settings{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:.9rem 1rem}
 .deck{cursor:pointer;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none;transition:transform .12s ease}
 .deck:hover{transform:translateY(-2px)}
@@ -366,8 +401,16 @@ body.studying #toast.show{transform:translate(-50%,0)}
   <!-- Kaladės -->
   <section id="view-home" class="view">
     <header class="masthead">
-      <h1>Kortelės</h1>
-      <p class="sub">Susirašyk žodžius ar sąvokas, apverk kortelę ir brauk į šoną: žinau arba nežinau. Kartok tik tai, ko dar neišmokai.</p>
+      <div class="mast-text">
+        <h1>Kortelės</h1>
+        <p class="sub">Susirašyk žodžius ar sąvokas, apverk kortelę ir brauk į šoną: žinau arba nežinau. Kartok tik tai, ko dar neišmokai.</p>
+      </div>
+      <div class="theme-picker">
+        <button type="button" id="theme-btn" class="theme-btn" aria-haspopup="true" aria-expanded="false" aria-label="Pasirinkti temą">
+          <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 3a9 9 0 0 1 0 18z" fill="currentColor"/></svg>
+        </button>
+        <div id="theme-menu" class="theme-menu" role="menu" hidden></div>
+      </div>
     </header>
     <div id="new-deck" class="row">
       <input type="text" id="new-deck-name" placeholder="Naujos kaladės pavadinimas" maxlength="60" aria-label="Naujos kaladės pavadinimas">
@@ -545,6 +588,24 @@ const KEY = 'korteles.v1';
 
 /* ---------- Būsena ---------- */
 let state = load();
+
+/* ---------- Tema (šviesi / tamsi mėlyna / tamsi pilka / sistema) ---------- */
+const THEMES = [
+  { id: 'dark', label: 'Mėlyna', swatch: '#131922' },
+  { id: 'light', label: 'Balta', swatch: '#FFFFFF' },
+  { id: 'gray', label: 'Juoda', swatch: '#1C1C1E' }
+];
+
+function applyTheme(id) {
+  if (id) document.documentElement.setAttribute('data-theme', id);
+  else document.documentElement.removeAttribute('data-theme');
+  requestAnimationFrame(() => {
+    const bg = getComputedStyle(document.documentElement).getPropertyValue('--bg').trim();
+    const meta = document.querySelector('meta[name="theme-color"]');
+    if (bg && meta) meta.setAttribute('content', bg);
+  });
+}
+applyTheme(state.theme || 'light');
 let current = 'home';
 let currentDeckId = null;
 let editingId = null;
@@ -1274,6 +1335,24 @@ $('#deck-name').addEventListener('change', e => {
   const v = e.target.value.trim();
   if (v) { d.name = v.slice(0, 60); save(); } else e.target.value = d.name;
 });
+function renderThemeMenu() {
+  const menu = $('#theme-menu');
+  menu.replaceChildren(...THEMES.map(t => h('button', {
+    type: 'button', class: 'theme-opt', role: 'menuitemradio', 'aria-checked': String((state.theme || 'light') === t.id),
+    onclick: () => { state.theme = t.id; save(); applyTheme(t.id); closeThemeMenu(); }
+  }, h('span', { class: 'theme-swatch', style: `background:${t.swatch}` }), t.label)));
+}
+function openThemeMenu() { renderThemeMenu(); $('#theme-menu').hidden = false; $('#theme-btn').setAttribute('aria-expanded', 'true'); }
+function closeThemeMenu() { $('#theme-menu').hidden = true; $('#theme-btn').setAttribute('aria-expanded', 'false'); }
+$('#theme-btn').addEventListener('click', e => {
+  e.stopPropagation();
+  if ($('#theme-menu').hidden) openThemeMenu(); else closeThemeMenu();
+});
+document.addEventListener('click', e => {
+  if (!$('#theme-menu').hidden && !e.target.closest('.theme-picker')) closeThemeMenu();
+});
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeThemeMenu(); });
+
 $('#deck-back').addEventListener('click', () => go('home'));
 $('#deck-reset-stats').addEventListener('click', async () => {
   const d = deckById(currentDeckId);
