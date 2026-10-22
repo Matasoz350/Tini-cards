@@ -1,0 +1,2448 @@
+<!DOCTYPE html>
+<html lang="lt" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<meta name="theme-color" content="#FFFFFF">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Kortelės">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<link rel="apple-touch-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAIAAACyr5FlAAACRklEQVR42u3cMU7DQBBAUdtyxQXoEB2guIaCmlMkHceg5hjpuAU1RagjOekQh0hNiwRlZr07eu8AkIx/ZhNk0q/Wcwf/GYwAcSAOxIE4EAfiQByIA3EgDhAH4kAciANxIA7EgTgQB+IAcSAOxIE4KGks8Dv2b7cGHWHaHEJ/fh/675CyaDqRqDhkkSCRQRk5RMx8UIY+CsWhjEx9+ChLkTisjWTLw+YgPg5rI9/ysDkQB+JAHIgDcSAOxIE4EAfiAHEgDsSBOBAH4kAciANxIA4QB+JAHIiDos72tU/Hp0fTrMjl1ubAsYI4yPme4+b9wzQrco7vj7M5EAfiQByIA3EgDsSBOBAH4gBxIA7EgTgQB+JAHIiDtMYaHsTn/suV+Ot+urY5cKzgWGlxf2JzIA7EgTgQB+JAHIgDcSAOEAfiQByIA3EgDhrgHtJ6uYcUxwqOlUb3JzYH4kAciANxIA7EgTgQB+IAcSAOxIE4KM6dYPVyJxiOFRwrje5PbA7EgThoJo5pczDNSpzrWtgcFInD8si0NmwOCsZheaRZGyGbQx85yog6VvSRoIzA9xzT5rCbT65ZAbv5FPRqHKMfd9d1D3cXLmHceOOMCZ4DbXxa+e359dt8C4ibs79zsFAclke7a8PmYNE4LI92ZzskeA7KaPtY0UeL8+xX67nks9q+XLm0rbzMSschkYa27zJx4NMK4kAciAPEgTgQB+JAHIgDcSAOxIE4EIcRIA7EgTgQB+JAHIgDcSAOxAHiQByIA3EgDqryA16uaBErisQKAAAAAElFTkSuQmCC">
+<link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAIAAACyr5FlAAACRklEQVR42u3cMU7DQBBAUdtyxQXoEB2guIaCmlMkHceg5hjpuAU1RagjOekQh0hNiwRlZr07eu8AkIx/ZhNk0q/Wcwf/GYwAcSAOxIE4EAfiQByIA3EgDhAH4kAciANxIA7EgTgQB+IAcSAOxIE4KGks8Dv2b7cGHWHaHEJ/fh/675CyaDqRqDhkkSCRQRk5RMx8UIY+CsWhjEx9+ChLkTisjWTLw+YgPg5rI9/ysDkQB+JAHIgDcSAOxIE4EAfiAHEgDsSBOBAH4kAciANxIA4QB+JAHIiDos72tU/Hp0fTrMjl1ubAsYI4yPme4+b9wzQrco7vj7M5EAfiQByIA3EgDsSBOBAH4gBxIA7EgTgQB+JAHIiDtMYaHsTn/suV+Ot+urY5cKzgWGlxf2JzIA7EgTgQB+JAHIgDcSAOEAfiQByIA3EgDhrgHtJ6uYcUxwqOlUb3JzYH4kAciANxIA7EgTgQB+IAcSAOxIE4KM6dYPVyJxiOFRwrje5PbA7EgThoJo5pczDNSpzrWtgcFInD8si0NmwOCsZheaRZGyGbQx85yog6VvSRoIzA9xzT5rCbT65ZAbv5FPRqHKMfd9d1D3cXLmHceOOMCZ4DbXxa+e359dt8C4ibs79zsFAclke7a8PmYNE4LI92ZzskeA7KaPtY0UeL8+xX67nks9q+XLm0rbzMSschkYa27zJx4NMK4kAciAPEgTgQB+JAHIgDcSAOxIE4EIcRIA7EgTgQB+JAHIgDcSAOxAHiQByIA3EgDqryA16uaBErisQKAAAAAElFTkSuQmCC">
+<title>Kortelės – mokymosi kortelės</title>
+<style>
+:root{
+  --bg:#FFFFFF; --ink:#16202E; --muted:#5B6879; --paper:#FFFFFF; --paper-back:#EAF0FF;
+  --line:#D6DCE3; --red:#D8443A; --blue:#2B5BD7; --yes:#178A5F; --no:#D8443A; --warn:#9A6B00;
+  --accent:#2B5BD7; --on-accent:#FFFFFF; --shadow:rgba(20,32,50,.35);
+  --ui:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",sans-serif;
+  --serif:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme]){
+    --bg:#131922; --ink:#E7ECF3; --muted:#93A0B3; --paper:#212B38; --paper-back:#1F2C4A;
+    --line:#33404F; --red:#F0645A; --blue:#8FADFF; --yes:#3CC08D; --no:#F0645A; --warn:#E3B341;
+    --accent:#7C9DFF; --on-accent:#0E1420; --shadow:rgba(0,0,0,.6);
+  }
+}
+/* Rankiniu būdu pasirinkta tema visada nustelbia sistemos nustatymą */
+:root[data-theme="light"]{
+  --bg:#FFFFFF; --ink:#16202E; --muted:#5B6879; --paper:#FFFFFF; --paper-back:#EAF0FF;
+  --line:#D6DCE3; --red:#D8443A; --blue:#2B5BD7; --yes:#178A5F; --no:#D8443A; --warn:#9A6B00;
+  --accent:#2B5BD7; --on-accent:#FFFFFF; --shadow:rgba(20,32,50,.35);
+}
+:root[data-theme="dark"]{
+  --bg:#131922; --ink:#E7ECF3; --muted:#93A0B3; --paper:#212B38; --paper-back:#1F2C4A;
+  --line:#33404F; --red:#F0645A; --blue:#8FADFF; --yes:#3CC08D; --no:#F0645A; --warn:#E3B341;
+  --accent:#7C9DFF; --on-accent:#0E1420; --shadow:rgba(0,0,0,.6);
+}
+:root[data-theme="gray"]{
+  --bg:#1C1C1E; --ink:#EDEDED; --muted:#9C9CA1; --paper:#2C2C2E; --paper-back:#333336;
+  --line:#3D3D40; --red:#FF6B5E; --blue:#8FADFF; --yes:#43C08D; --no:#FF6B5E; --warn:#E3B341;
+  --accent:#8B8FFF; --on-accent:#141416; --shadow:rgba(0,0,0,.6);
+}
+*{box-sizing:border-box}
+body{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
+input,textarea{-webkit-user-select:text;user-select:text;-webkit-touch-callout:default}
+[hidden]{display:none!important}
+:root{color-scheme:light}
+:root[data-theme="dark"],:root[data-theme="gray"]{color-scheme:dark}
+@media (prefers-color-scheme:dark){:root:not([data-theme]){color-scheme:dark}}
+html{background:var(--bg)}
+html,body{margin:0;touch-action:pan-x pan-y;-webkit-text-size-adjust:100%}
+button,label,summary,[role=button]{touch-action:manipulation}
+body{background:var(--bg);color:var(--ink);font-family:var(--ui);line-height:1.45;-webkit-tap-highlight-color:transparent}
+body.studying{overflow:hidden;overscroll-behavior:none}
+.app{max-width:720px;margin:0 auto;padding:1.4rem 1rem 4rem}
+h1,h2{font-family:var(--serif);margin:0}
+h1{font-size:2.6rem;letter-spacing:-.01em;line-height:1.1}
+h2{font-size:1.3rem;margin:2rem 0 .6rem}
+p{margin:.4rem 0}
+.sub{color:var(--muted);max-width:34rem}
+button,input,textarea{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+
+.btn{white-space:nowrap;display:inline-flex;align-items:center;justify-content:center;gap:.4rem;min-height:44px;padding:.5rem 1rem;border:1px solid var(--line);background:var(--paper);border-radius:10px;cursor:pointer;font-weight:600;text-decoration:none}
+.btn:hover{border-color:var(--muted)}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+.btn.ghost{background:transparent;border-color:transparent}
+.btn.ghost:hover{background:color-mix(in srgb,var(--ink) 8%,transparent)}
+.btn.small{min-height:36px;padding:.25rem .7rem;font-size:.9rem}
+.btn.danger{color:var(--red);border-color:color-mix(in srgb,var(--red) 50%,var(--line))}
+.danger-text{color:var(--red)}
+.row{display:flex;gap:.6rem;flex-wrap:wrap;align-items:center}
+input[type=text],.title-input,textarea{width:100%;background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:.65rem .8rem}
+input[type=text]{flex:1;min-width:0;width:auto}
+textarea{resize:vertical;display:block;margin-top:.3rem}
+
+.masthead{display:flex;justify-content:space-between;align-items:flex-start;gap:.8rem;margin:.6rem 0 1.6rem}
+.masthead .mast-text{min-width:0}
+.theme-picker{position:relative;flex:0 0 auto}
+.theme-btn{width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:var(--paper);display:flex;align-items:center;justify-content:center;font-size:1.2rem;cursor:pointer;color:var(--ink)}
+.theme-btn:hover{border-color:var(--muted)}
+.theme-menu{position:absolute;right:0;top:calc(100% + .4rem);background:var(--paper);border:1px solid var(--line);border-radius:12px;box-shadow:0 14px 30px -14px var(--shadow);padding:.4rem;display:grid;gap:.2rem;min-width:170px;z-index:10}
+.theme-opt{display:flex;align-items:center;gap:.6rem;width:100%;padding:.5rem .6rem;border-radius:8px;border:0;background:none;cursor:pointer;font:inherit;color:var(--ink);text-align:left}
+.theme-opt:hover{background:var(--tint,color-mix(in srgb,var(--ink) 8%,transparent))}
+.theme-opt[aria-checked="true"]{background:color-mix(in srgb,var(--accent) 14%,transparent);font-weight:700}
+.theme-swatch{width:20px;height:20px;border-radius:50%;border:1px solid var(--line);flex:0 0 auto}
+#new-deck{margin-bottom:1.2rem}
+.meta{color:var(--muted);font-size:.92rem}
+.note{background:var(--paper);border:1px solid var(--line);border-left:4px solid var(--blue);border-radius:10px;padding:.7rem .9rem;margin:.4rem 0 1rem}
+.note p{margin:0 0 .5rem;font-size:.95rem}
+.tools{display:flex;gap:.5rem;margin-top:2rem}
+
+.bar{display:flex;justify-content:space-between;align-items:center;gap:.5rem;margin-bottom:.8rem}
+.title-input{font-family:var(--serif);font-size:1.7rem;font-weight:700;border-color:transparent;background:transparent;padding-left:.3rem}
+.title-input:hover,.title-input:focus{border-color:var(--line);background:var(--paper)}
+.editor{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:1rem;margin-top:.8rem;display:grid;gap:.8rem}
+.editor label{display:block;font-weight:600;font-size:.92rem}
+.editor textarea{font-weight:400;font-family:var(--serif);font-size:1.1rem}
+.paste-panel textarea{font-family:var(--ui)}
+.bulk{margin-top:.8rem;color:var(--muted)}
+.bulk summary{cursor:pointer;padding:.4rem 0;font-weight:600}
+.bulk .btn{margin-top:.5rem}
+.cards{list-style:none;margin:0;padding:0}
+.crow{display:flex;justify-content:space-between;gap:.8rem;padding:.8rem 0;border-top:1px solid var(--line)}
+.ctext{min-width:0}
+.cq{font-family:var(--serif);font-weight:700;font-size:1.08rem;overflow-wrap:anywhere;white-space:pre-wrap}
+.ca{color:var(--muted);overflow-wrap:anywhere;white-space:pre-wrap}
+.cact{display:flex;gap:.2rem;flex-shrink:0;align-items:flex-start}
+
+/* Study */
+#view-study{display:flex;flex-direction:column;height:calc(100vh - 2.4rem);height:calc(100dvh - 2.4rem - env(safe-area-inset-bottom,0px))}
+.status{text-align:center;font-size:.9rem;color:var(--muted);line-height:1.3;margin:0 0 .5rem}
+.status b{color:var(--ink)}
+.progress{height:6px;border-radius:3px;background:var(--line);overflow:hidden;margin-bottom:.4rem}
+#progress-fill{display:block;height:100%;width:0;background:var(--yes);transition:width .35s ease}
+.stage{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.1rem;min-height:0}
+:root{--stackh:min(54vh,480px);--areah:calc(var(--stackh) - 100px)}
+@supports (height:1dvh){:root{--stackh:min(54dvh,480px)}}
+.stack{position:relative;width:min(88vw,420px);height:var(--stackh)}
+.peek{position:absolute;inset:0;background:var(--paper);border:1px solid var(--line);border-radius:14px;transform:translateY(10px) scale(.95);opacity:.7}
+.wrap{position:absolute;inset:0;perspective:1400px;touch-action:none;cursor:grab;user-select:none;-webkit-user-select:none;transition:transform .25s ease,opacity .25s ease}
+.wrap:active{cursor:grabbing}
+.card{position:absolute;inset:0;transform-style:preserve-3d;transition:transform .5s cubic-bezier(.3,.7,.2,1)}
+.card.flipped{transform:rotateY(180deg)}
+.card.no-anim{transition:none}
+.face{position:absolute;inset:0;background:var(--paper);border-radius:14px;backface-visibility:hidden;-webkit-backface-visibility:hidden;box-shadow:0 1px 0 rgba(0,0,0,.05),0 14px 30px -14px var(--shadow);overflow:hidden}
+.face::before{content:"";position:absolute;left:0;right:0;top:64px;height:2px;background:var(--red)}
+.face.back{background:var(--paper-back);transform:rotateY(180deg)}
+.face.back::before{background:var(--blue)}
+.tag{position:absolute;left:20px;top:20px;font-size:.9rem;color:var(--muted)}
+.text{position:absolute;inset:80px 22px 22px;display:flex;overflow:auto;font-family:var(--serif);text-align:center;line-height:1.3;font-size:1.7rem}
+.text .tin{margin:auto;display:flex;flex-direction:column;align-items:center;gap:.6rem;max-width:100%}
+.text span{white-space:pre-wrap;overflow-wrap:anywhere}
+.cimg{display:block;max-width:100%;max-height:calc(var(--areah) * .55);object-fit:contain;border-radius:8px;pointer-events:none;-webkit-user-drag:none}
+.cimg.solo{max-height:calc(var(--areah) - 6px)}
+.face[data-size="l"] .text{font-size:2.3rem}
+.face[data-size="m"] .text{font-size:1.75rem}
+.face[data-size="s"] .text{font-size:1.35rem}
+.face[data-size="xs"] .text{font-size:1.1rem}
+.stamp{position:absolute;top:10px;padding:.1rem .7rem;border:3px solid;border-radius:8px;font-weight:800;font-size:1.25rem;opacity:0;pointer-events:none;z-index:5;background:var(--paper)}
+.stamp.yes{left:14px;color:var(--yes);transform:rotate(-8deg)}
+.stamp.no{right:14px;color:var(--no);transform:rotate(8deg)}
+.hint{color:var(--muted);font-size:.9rem;text-align:center;max-width:22rem;margin:0}
+.actions{display:flex;justify-content:center;align-items:center;gap:1.4rem;padding-top:.4rem}
+.round{width:64px;height:64px;border-radius:50%;border:2.5px solid;background:var(--paper);font-size:1.7rem;font-weight:700;cursor:pointer;display:grid;place-items:center;line-height:1}
+.round.no{color:var(--no);border-color:var(--no)}
+.round.yes{color:var(--yes);border-color:var(--yes)}
+.round:hover{background:color-mix(in srgb,currentColor 12%,var(--paper))}
+
+/* Done */
+.sum-stats{color:var(--muted);margin:.4rem 0 .8rem}
+.sum-actions{display:grid;gap:.5rem;margin:1rem 0 .4rem}
+.sum-actions .btn{width:100%}
+.tabs{display:flex;border-bottom:1px solid var(--line);margin-top:1.4rem}
+.tab{flex:1;min-height:44px;padding:.6rem .4rem;background:none;border:0;border-bottom:3px solid transparent;font-weight:700;color:var(--muted);cursor:pointer;margin-bottom:-1px}
+.tab[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--accent)}
+.tab.no[aria-selected="true"]{border-bottom-color:var(--no)}
+.tab.yes[aria-selected="true"]{border-bottom-color:var(--yes)}
+.sumlist{list-style:none;margin:0;padding:0}
+.sumlist li{display:flex;justify-content:space-between;gap:.8rem;padding:.7rem 0;border-bottom:1px solid var(--line)}
+.badge{color:var(--muted);font-size:.85rem;white-space:nowrap}
+
+.paste-panel{margin:.8rem 0 1rem}
+.paste-panel textarea{font-size:1rem}
+.bulk input[type=text]{width:100%;margin:.3rem 0}
+.bulk{margin-bottom:.4rem}
+.dlg{position:fixed;inset:0;background:rgba(10,15,25,.55);display:grid;place-items:center;z-index:60;padding:1rem}
+.dlg-box{background:var(--paper);border-radius:14px;padding:1.2rem;max-width:22rem;width:100%;box-shadow:0 20px 50px -10px var(--shadow)}
+.dlg-box p{font-weight:600;margin:0 0 1rem}
+#toast{position:fixed;left:50%;bottom:calc(1.2rem + env(safe-area-inset-bottom,0px));transform:translate(-50%,20px);background:var(--ink);color:var(--bg);padding:.6rem 1rem;border-radius:10px;opacity:0;pointer-events:none;transition:.25s;z-index:50;max-width:90vw;text-align:center}
+#toast.show{opacity:1;transform:translate(-50%,0)}
+body.studying #toast{bottom:auto;top:calc(.8rem + env(safe-area-inset-top,0px));transform:translate(-50%,-20px)}
+body.studying #toast.show{transform:translate(-50%,0)}
+@media (hover:none){.kbd-hint{display:none}}
+
+
+/* Kaladžių plytelės */
+.hued{--c:hsl(var(--h) 62% 42%);--tint:hsl(var(--h) 75% 93%);--on-c:#fff}
+@media (prefers-color-scheme:dark){:root:not([data-theme]) .hued{--c:hsl(var(--h) 72% 68%);--tint:hsl(var(--h) 32% 19%);--on-c:#10151d}}
+:root[data-theme="light"] .hued{--c:hsl(var(--h) 62% 42%);--tint:hsl(var(--h) 75% 93%);--on-c:#fff}
+:root[data-theme="dark"] .hued,:root[data-theme="gray"] .hued{--c:hsl(var(--h) 72% 68%);--tint:hsl(var(--h) 32% 19%);--on-c:#10151d}
+.decks{display:grid;gap:1.3rem;grid-template-columns:repeat(auto-fill,minmax(285px,1fr));margin-top:1.4rem}
+.deck{position:relative;background:var(--paper);border-radius:14px;overflow:hidden;
+  box-shadow:0 1px 0 rgba(0,0,0,.05),0 12px 26px -16px var(--shadow)}
+.deck[data-stack="1"]{box-shadow:0 1px 0 rgba(0,0,0,.05),0 5px 0 -1px var(--paper),0 6px 0 -1px var(--line),0 14px 24px -16px var(--shadow)}
+.deck[data-stack="2"]{box-shadow:0 1px 0 rgba(0,0,0,.05),0 5px 0 -1px var(--paper),0 6px 0 -1px var(--line),0 10px 0 -2px var(--paper),0 11px 0 -2px var(--line),0 18px 24px -16px var(--shadow)}
+.deck-head{background:var(--tint);border-bottom:3px solid var(--c);padding:.9rem 1rem .8rem;display:flex;justify-content:space-between;align-items:flex-start;gap:.8rem}
+.deck-name{font-family:var(--serif);font-size:1.35rem;font-weight:700;line-height:1.2;overflow-wrap:anywhere;min-width:0}
+.deck-count{flex:0 0 auto;text-align:center;line-height:1.1;color:var(--c)}
+.deck-count b{display:block;font-family:var(--serif);font-size:1.9rem}
+.deck-count span{font-size:.75rem;font-weight:700}
+.deck-body{padding:.8rem 1rem 1rem}
+.deck-meta{color:var(--muted);font-size:.9rem;margin-bottom:.7rem}
+.deck-bar{height:8px;border-radius:4px;background:var(--line);overflow:hidden;margin:.1rem 0 .4rem}
+.deck-bar span{display:block;height:100%;background:var(--c);border-radius:4px}
+.deck-actions{display:flex;gap:.4rem;flex-wrap:wrap}
+.deck-actions .btn{flex:1 1 auto;padding:.4rem .7rem}
+.deck .btn.primary,.hued .btn.primary{background:var(--c);border-color:var(--c);color:var(--on-c)}
+.deck .btn.ghost{flex:0 0 auto}
+.icon-btn{flex:0 0 auto;width:44px;padding:.5rem}
+.empty{color:var(--muted);padding:1.2rem 0;grid-column:1/-1;border:2px dashed var(--line);border-radius:14px;text-align:center;padding:1.6rem 1rem}
+.empty .btn{margin-top:.6rem}
+.color-bar{height:6px;border-radius:3px;background:var(--c);margin:.2rem 0 .3rem}
+.swatches{display:flex;gap:.55rem;flex-wrap:wrap;margin:.4rem .3rem .2rem}
+.swatch{width:32px;height:32px;border-radius:50%;border:3px solid var(--paper);background:var(--c);cursor:pointer;box-shadow:0 0 0 1px var(--line)}
+.swatch[aria-checked="true"]{box-shadow:0 0 0 3px var(--ink)}
+
+/* Kaladės langas: informacija ir mokymosi būdai */
+.sec{font-size:1.05rem;margin:1.3rem 0 .5rem}
+.kicker{font-size:.76rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--c);margin:.3rem 0 0}
+#deck-meta{margin:.15rem 0 0}
+
+/* Mokymosi būdų eilutė */
+.tabsrow{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:.6rem;margin:.9rem 0}
+.tabtile{display:flex;align-items:center;gap:.7rem;text-align:left;background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:.75rem .9rem;cursor:pointer;min-height:64px;width:100%}
+.tabtile:hover:not(.disabled){border-color:var(--c)}
+.tabtile.primary{background:var(--tint);border-color:var(--c)}
+.tabtile.disabled{opacity:.5;cursor:default}
+.tabicon{flex:0 0 auto;width:38px;height:38px;border-radius:10px;background:var(--tint);color:var(--c);display:flex;align-items:center;justify-content:center;font-size:1.2rem}
+.tabtile.primary .tabicon{background:var(--paper)}
+.tabtext{flex:1;min-width:0;display:flex;flex-direction:column;line-height:1.25}
+.tabtext b{font-family:var(--serif);font-size:1.02rem;font-weight:700}
+.tabtext span{font-size:.82rem;color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.tabchev{flex:0 0 auto;font-size:1.4rem;color:var(--c);font-weight:300}
+
+/* Kortelių peržiūra (peek) + pažangos ratas, dviem stulpeliais */
+.staronly-row{margin:.6rem 0 .2rem}
+.dhub-main{display:grid;grid-template-columns:1fr;gap:1.2rem;margin-top:.9rem;align-items:start}
+@media (min-width:760px){.dhub-main{grid-template-columns:1.3fr .9fr}}
+.peekcol{display:flex;flex-direction:column;align-items:center;gap:.3rem;min-width:0}
+.peek-stack{--stackh:320px;--areah:236px;width:100%;max-width:400px;margin:0 auto}
+#peek-wrap{cursor:pointer}
+.peeknav{display:flex;align-items:center;justify-content:center;gap:1rem;margin-top:.5rem}
+.peektoggles{display:flex;gap:1.1rem;flex-wrap:wrap;justify-content:center;margin-top:.7rem}
+
+/* Perjungikliai (toggle switch), vietoj paprastų žymimųjų langelių */
+.toggle{display:inline-flex;align-items:center;gap:.5rem;cursor:pointer;font-size:.88rem;color:var(--muted);-webkit-user-select:none;user-select:none}
+.toggle-input{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none}
+.toggle-track{position:relative;flex:0 0 auto;width:36px;height:21px;border-radius:11px;background:var(--line);transition:background .18s ease}
+.toggle-thumb{position:absolute;top:2px;left:2px;width:17px;height:17px;border-radius:50%;background:var(--paper);box-shadow:0 1px 3px rgba(0,0,0,.35);transition:transform .18s ease}
+.toggle-input:checked + .toggle-track{background:var(--c)}
+.toggle-input:checked + .toggle-track .toggle-thumb{transform:translateX(15px)}
+.toggle-input:focus-visible + .toggle-track{outline:2px solid var(--c);outline-offset:2px}
+.toggle-text{color:var(--ink)}
+
+.progress-card{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:1rem}
+.progress-card h3{margin:0 0 .7rem;font-family:var(--serif);font-size:1.1rem}
+.ring-wrap{position:relative;width:148px;height:148px;margin:0 auto .9rem}
+.ring{width:100%;height:100%;transform:rotate(-90deg);display:block}
+.ring-bg{fill:none;stroke:var(--line);stroke-width:10}
+.ring-fg{fill:none;stroke:var(--c);stroke-width:10;stroke-linecap:round;transition:stroke-dashoffset .4s ease}
+.ring-label{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+.ring-label b{font-family:var(--serif);font-size:1.6rem;line-height:1.1}
+.ring-label span{font-size:.78rem;color:var(--muted)}
+.ring-stats{list-style:none;margin:0 0 .8rem;padding:0}
+.ring-stats li{display:flex;justify-content:space-between;gap:.6rem;padding:.35rem 0;border-top:1px solid var(--line);font-size:.9rem;color:var(--muted)}
+.ring-stats li:first-child{border-top:none}
+.ring-stats b{color:var(--ink);font-weight:700}
+.progress-card > .btn{width:100%}
+.mini{min-height:30px;padding:.1rem .55rem;font-size:.82rem;margin-left:.4rem}
+
+/* Kortelių sąrašo įrankiai */
+.card-tools{display:flex;justify-content:space-between;align-items:center;gap:.6rem;flex-wrap:wrap;margin:.3rem 0 .7rem}
+.star-btn{background:none;border:0;cursor:pointer;font-size:1.15rem;line-height:1;padding:.1rem .3rem;color:var(--muted)}
+.star-btn.on{color:#D9A400}
+
+/* Tiesa ar melas */
+.tf-prop{margin-top:.9rem;padding:.8rem;border-radius:12px;background:var(--tint);text-align:center}
+.tf-ptext{font-family:var(--serif);font-size:1.25rem;font-weight:700;overflow-wrap:anywhere}
+.tf-pimg{max-width:100%;max-height:150px;border-radius:8px;margin:0 auto .5rem;display:block;object-fit:contain}
+.tf-actions{display:flex;gap:.7rem;margin-top:1rem}
+.tf-actions .btn{flex:1;min-height:56px;font-size:1.05rem;font-weight:700;border-width:2px;border-color:var(--line);color:var(--ink)}
+.tf-actions .btn.correct{border-color:var(--yes);color:var(--yes);background:color-mix(in srgb,var(--yes) 16%,var(--paper))}
+.tf-actions .btn.wrong{border-color:var(--no);color:var(--no);background:color-mix(in srgb,var(--no) 16%,var(--paper))}
+.tf-actions .btn.dim{opacity:.45}
+.tf-actions .btn:disabled{cursor:default}
+.tf-reveal{margin-top:.9rem;padding:.7rem .9rem;border-radius:12px;background:var(--tint);text-align:center}
+.tf-reveal b{font-family:var(--serif);font-size:1.1rem}
+.tf-reveal.ok{color:var(--yes)}
+.tf-reveal.ok b{color:var(--yes)}
+.tf-reveal.bad{color:var(--no)}
+.tf-reveal.bad b{color:var(--no)}
+.settings{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:.9rem 1rem}
+.deck{cursor:pointer;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none;transition:transform .12s ease}
+.deck:hover{transform:translateY(-2px)}
+.deck:active{transform:scale(.985)}
+.deck:focus-visible{outline:3px solid var(--c);outline-offset:3px}
+.deck-foot{display:flex;flex-wrap:wrap;align-items:center;gap:.6rem}
+.deck-foot .deck-meta{margin:0;flex:1;min-width:0}
+.deck-foot .deck-bar{flex:1 1 100%;margin:.1rem 0 .5rem}
+.chev{font-size:1.8rem;line-height:1;color:var(--c);font-weight:300}
+
+/* Testas */
+.qcard{background:var(--paper);border-radius:14px;box-shadow:0 1px 0 rgba(0,0,0,.05),0 14px 30px -14px var(--shadow);padding:1rem 1.2rem 1.3rem;margin:.9rem 0 1rem;overflow:hidden}
+.qtag{color:var(--muted);font-size:.9rem;padding-bottom:.8rem}
+.qrule{height:2px;background:var(--red);margin:0 -1.2rem}
+.qtext{font-family:var(--serif);text-align:center;line-height:1.3;padding-top:.9rem;font-size:1.5rem;white-space:pre-wrap;overflow-wrap:anywhere}
+.qtext[data-size="l"]{font-size:1.9rem}
+.qtext[data-size="s"]{font-size:1.25rem}
+.qtext[data-size="xs"]{font-size:1.1rem}
+.opts{display:grid;gap:.6rem}
+.opt{display:flex;gap:.8rem;align-items:flex-start;text-align:left;width:100%;min-height:52px;padding:.7rem .9rem;background:var(--paper);color:var(--ink);border:2px solid var(--line);border-radius:12px;cursor:pointer;font:inherit}
+.opt:hover:not([aria-disabled="true"]){border-color:var(--accent)}
+.opt[aria-disabled="true"]{cursor:default}
+.opt .let{flex:0 0 1.9rem;height:1.9rem;border-radius:50%;display:grid;place-items:center;font-weight:800;font-size:.9rem;background:color-mix(in srgb,var(--ink) 9%,transparent)}
+.opt .ot{flex:1;overflow-wrap:anywhere;padding-top:.2rem}
+.opt .mark{font-weight:800;padding-top:.15rem}
+.opt.correct{border-color:var(--yes);background:color-mix(in srgb,var(--yes) 13%,var(--paper))}
+.opt.correct .mark{color:var(--yes)}
+.opt.wrong{border-color:var(--no);background:color-mix(in srgb,var(--no) 11%,var(--paper))}
+.opt.wrong .mark{color:var(--no)}
+.opt.dim{opacity:.6}
+.fb{margin:1rem 0 .6rem;font-weight:700}
+.fb.ok{color:var(--yes)}
+.fb.bad{color:var(--no)}
+#test-next{width:100%}
+.wrong-a{color:var(--muted)}
+.right-a{color:var(--yes);font-weight:600}
+
+/* Nuotraukos */
+.imgrow{display:flex;align-items:center;gap:.6rem;flex-wrap:wrap;margin-top:.5rem}
+.imgrow label.btn{font-weight:600;cursor:pointer}
+.thumb{display:block;max-height:64px;max-width:110px;border-radius:6px;object-fit:cover;margin-top:.3rem;border:1px solid var(--line)}
+.imgrow .thumb{margin-top:0}
+.qimg{display:block;margin:1.1rem auto .2rem;max-width:100%;max-height:230px;border-radius:8px;object-fit:contain}
+.opt .oimg{display:block;max-width:100%;max-height:100px;border-radius:6px;margin-top:.3rem;object-fit:contain}
+#storage-info{flex-basis:100%}
+#storage-info.warn{color:var(--red);font-weight:600}
+
+/* Rašymo praktika */
+.w-input{display:block;width:100%;box-sizing:border-box;font-family:var(--serif);font-size:1.3rem;padding:.7rem .9rem;border:2px solid var(--line);border-radius:12px;background:var(--paper);color:var(--ink);text-align:center;margin-top:.9rem}
+.w-input:focus{border-color:var(--accent)}
+.w-input.correct{border-color:var(--yes);background:color-mix(in srgb,var(--yes) 10%,var(--paper))}
+.w-input.wrong{border-color:var(--no);background:color-mix(in srgb,var(--no) 10%,var(--paper))}
+.w-input.close{border-color:var(--warn);background:color-mix(in srgb,var(--warn) 12%,var(--paper))}
+.w-correct{margin-top:.8rem;padding:.7rem .9rem;border-radius:12px;background:var(--tint);text-align:center}
+.w-correct b{font-family:var(--serif);font-size:1.15rem}
+.w-correct.close{background:color-mix(in srgb,var(--warn) 16%,var(--paper));border:1px solid color-mix(in srgb,var(--warn) 45%,var(--line));text-align:left}
+.diff-label{font-weight:700;color:var(--warn);margin-bottom:.5rem;text-align:center}
+.diff-row{font-family:var(--serif);font-size:1.1rem;line-height:1.5;margin:.3rem 0;overflow-wrap:anywhere;text-align:center}
+.diff-tag{display:block;font-family:var(--ui);font-size:.78rem;color:var(--muted);margin-bottom:.1rem}
+.diff-del{background:color-mix(in srgb,var(--no) 30%,transparent);text-decoration:line-through;border-radius:3px;padding:.02em .1em}
+.diff-add{background:color-mix(in srgb,var(--warn) 40%,transparent);border-radius:3px;padding:.02em .1em;font-weight:700}
+.w-actions{display:flex;gap:.6rem;margin-top:.9rem;flex-wrap:wrap}
+.w-actions .btn{flex:1 1 auto}
+.w-actions .btn.warn{background:var(--warn);border-color:var(--warn);color:var(--on-accent)}
+
+/* Greitas suporavimas */
+.mgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:.5rem;margin-top:.9rem}
+@media (min-width:480px){.mgrid{grid-template-columns:repeat(4,1fr)}}
+.mtile{position:relative;min-height:84px;border:2px solid var(--line);border-radius:12px;background:var(--paper);color:var(--ink);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.3rem;padding:.4rem;text-align:center;cursor:pointer;font-family:var(--serif);font-size:.85rem;line-height:1.2;overflow:hidden;transition:transform .12s ease,border-color .15s,background .15s;-webkit-user-select:none;user-select:none}
+.mtile:active{transform:scale(.96)}
+.mtile img{max-width:100%;max-height:44px;object-fit:contain;border-radius:6px}
+.mtile .mt-text{display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden;overflow-wrap:anywhere}
+.mtile.sel{border-color:var(--accent);background:color-mix(in srgb,var(--accent) 14%,var(--paper))}
+.mtile.bad{border-color:var(--no);background:color-mix(in srgb,var(--no) 16%,var(--paper))}
+.mtile.ok{border-color:var(--yes);background:color-mix(in srgb,var(--yes) 14%,var(--paper));opacity:.32;pointer-events:none}
+.mtile[aria-disabled="true"]{cursor:default}
+#m-timer{font-variant-numeric:tabular-nums}
+.m-timer-wrap{text-align:center;margin:.3rem 0 .1rem}
+.m-timer-big{font-family:var(--serif);font-weight:700;font-size:2.6rem;color:var(--accent);font-variant-numeric:tabular-nums;letter-spacing:.01em}
+
+@media (max-width:340px){.mode-btns.wide{flex-wrap:wrap}.mode-btns.wide .btn{flex:1 1 auto}}
+/* Telefonai ir siauri ekranai */
+@media (max-width:520px){
+  .app{padding:1rem .9rem 3rem}
+  h1{font-size:2.2rem}
+  #new-deck input[type=text]{flex:1 1 100%}
+  #new-deck .btn{flex:1 1 calc(50% - .3rem)}
+  .editor{padding:.8rem}
+  .crow{flex-direction:column;gap:.2rem}
+  .cact{align-self:flex-end}
+  .text{inset:76px 18px 18px}
+  .stamp{font-size:1.1rem}
+  .tools{flex-wrap:wrap}
+}
+/* Žemi ekranai (telefonas gulsčiai) */
+@media (max-height:560px){
+  .hint{display:none}
+  :root{--stackh:min(58vh,300px);--areah:calc(var(--stackh) - 74px)}
+  @supports (height:1dvh){:root{--stackh:min(58dvh,300px)}}
+  .stack{width:min(88vw,560px)}
+  .stage{gap:.6rem}
+  .round{width:52px;height:52px;font-size:1.4rem}
+  .face::before{top:48px}
+  .text{inset:58px 18px 14px}
+  .tag{top:14px}
+  .stamp{top:6px}
+  h1{font-size:1.8rem}
+}
+
+@media (prefers-reduced-motion:reduce){
+  .card{transition-duration:.01s}
+  .wrap,#progress-fill,#toast{transition-duration:.01s}
+}
+</style>
+</head>
+<body>
+<main class="app">
+
+  <!-- Kaladės -->
+  <section id="view-home" class="view">
+    <header class="masthead">
+      <div class="mast-text">
+        <h1>Kortelės</h1>
+        <p class="sub">Susirašyk žodžius ar sąvokas, apverk kortelę ir brauk į šoną: žinau arba nežinau. Kartok tik tai, ko dar neišmokai.</p>
+      </div>
+      <div class="theme-picker">
+        <button type="button" id="theme-btn" class="theme-btn" aria-haspopup="true" aria-expanded="false" aria-label="Pasirinkti temą">
+          <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 3a9 9 0 0 1 0 18z" fill="currentColor"/></svg>
+        </button>
+        <div id="theme-menu" class="theme-menu" role="menu" hidden></div>
+      </div>
+    </header>
+    <div id="new-deck" class="row">
+      <input type="text" id="new-deck-name" placeholder="Naujos kaladės pavadinimas" maxlength="60" aria-label="Naujos kaladės pavadinimas">
+      <button type="button" id="btn-new-deck" class="btn primary">Sukurti kaladę</button>
+      <button type="button" id="btn-paste-toggle" class="btn" aria-expanded="false" aria-controls="paste-panel">Įklijuoti sąrašą</button>
+    </div>
+    <div id="paste-panel" class="editor paste-panel" hidden>
+      <label for="paste-text">Įklijuok kortelių sąrašą</label>
+      <p class="meta">Kiekvienoje eilutėje klausimas ir atsakymas, atskirti kabliataškiu (;), stačia brūkšnele (|) ar Tab. Veikia ir įklijuota lentelė su dviem stulpeliais. Kaladė gaus aukščiau įrašytą pavadinimą.</p>
+      <textarea id="paste-text" rows="8" placeholder="dog ; šuo&#10;cat ; katė"></textarea>
+      <div class="row">
+        <button type="button" id="paste-create" class="btn primary">Sukurti kaladę iš sąrašo</button>
+        <button type="button" id="paste-cancel" class="btn ghost">Uždaryti</button>
+      </div>
+    </div>
+    <div id="backup-note" class="note" hidden>
+      <p id="backup-text"></p>
+      <div class="row">
+        <button type="button" id="backup-now" class="btn primary small">Eksportuoti dabar</button>
+        <button type="button" id="backup-later" class="btn ghost small">Priminti vėliau</button>
+      </div>
+    </div>
+    <div id="deck-list"></div>
+    <div class="tools">
+      <span class="meta" id="storage-info" hidden></span>
+      <button type="button" id="btn-export" class="btn ghost small">Eksportuoti kopiją</button>
+      <label class="btn ghost small">Įkelti kopiją<input type="file" id="file-import" accept="application/json,.json" hidden></label>
+    </div>
+  </section>
+
+  <!-- Kaladės redagavimas -->
+  <section id="view-deck" class="view hued" hidden>
+    <div class="bar">
+      <button type="button" id="deck-back" class="btn ghost">‹ Kaladės</button>
+    </div>
+    <div class="color-bar" id="color-bar"></div>
+    <div class="kicker">Mokymosi kaladė</div>
+    <input id="deck-name" class="title-input" maxlength="60" aria-label="Kaladės pavadinimas">
+    <p id="deck-meta" class="meta"></p>
+
+    <div class="staronly-row">
+      <label class="toggle"><input type="checkbox" class="toggle-input" id="staronly-toggle"><span class="toggle-track"><span class="toggle-thumb"></span></span><span class="toggle-text">★ Žaisti tik pažymėtas (<span id="staronly-count">0</span>)</span></label>
+    </div>
+
+    <div id="tabsrow"></div>
+
+    <div class="dhub-main">
+      <div class="peekcol">
+        <div class="stack peek-stack" id="peek-stackwrap">
+          <div class="wrap" id="peek-wrap" tabindex="0" role="button" aria-label="Kortelė. Bakstelėk, kad apverstum.">
+            <div class="card" id="peek-card">
+              <div class="face front" id="peek-face-front"><span class="tag" id="peek-tag-front"></span><div class="text"><div class="tin"><img class="cimg" id="peek-img-front" alt="" hidden><span id="peek-txt-front"></span></div></div></div>
+              <div class="face back" id="peek-face-back"><span class="tag" id="peek-tag-back"></span><div class="text"><div class="tin"><img class="cimg" id="peek-img-back" alt="" hidden><span id="peek-txt-back"></span></div></div></div>
+            </div>
+          </div>
+        </div>
+        <p class="hint" id="peek-hint">Bakstelėk, kad apverstum</p>
+        <div class="peeknav" id="peek-nav">
+          <button type="button" class="btn ghost small" id="peek-prev" aria-label="Ankstesnė kortelė">‹</button>
+          <span class="meta" id="peek-pos"></span>
+          <button type="button" class="btn ghost small" id="peek-next" aria-label="Kita kortelė">›</button>
+        </div>
+        <div class="peektoggles">
+          <label class="toggle"><input type="checkbox" class="toggle-input" id="peek-shuffle"><span class="toggle-track"><span class="toggle-thumb"></span></span><span class="toggle-text">Maišyti korteles</span></label>
+          <label class="toggle"><input type="checkbox" class="toggle-input" id="peek-firstans"><span class="toggle-track"><span class="toggle-thumb"></span></span><span class="toggle-text">Pirma atsakymas</span></label>
+        </div>
+        <div class="qcard" id="peek-empty" hidden><p class="meta" id="peek-empty-text"></p></div>
+      </div>
+      <div id="progress-panel"></div>
+    </div>
+
+    <h2 id="cards-heading" class="sec">Kortelės</h2>
+
+    <div id="card-form" class="editor">
+      <div class="field">
+        <label for="f-q">Klausimas arba žodis</label>
+        <textarea id="f-q" rows="2"></textarea>
+        <div class="imgrow" id="f-q-img"></div>
+      </div>
+      <div class="field">
+        <label for="f-a">Atsakymas</label>
+        <textarea id="f-a" rows="2"></textarea>
+        <div class="imgrow" id="f-a-img"></div>
+      </div>
+      <div class="row">
+        <button type="button" class="btn primary" id="f-submit">Pridėti kortelę</button>
+        <button type="button" id="f-cancel" class="btn ghost" hidden>Atšaukti keitimą</button>
+        <span class="meta kbd-hint">Ctrl + Enter išsaugo</span>
+      </div>
+    </div>
+
+    <details class="bulk">
+      <summary>Pridėti daug kortelių iš karto</summary>
+      <p>Kiekvienoje eilutėje rašyk klausimą ir atsakymą, atskirtus kabliataškiu (;), stačia brūkšnele (|) arba Tab.</p>
+      <textarea id="bulk" rows="6" placeholder="dog ; šuo&#10;cat ; katė&#10;Vilnius ; Lietuvos sostinė"></textarea>
+      <button type="button" id="bulk-add" class="btn">Pridėti visas</button>
+    </details>
+
+    <div id="card-tools" class="card-tools"></div>
+    <ul id="card-list" class="cards"></ul>
+
+    <h2 class="sec">Kaladės nustatymai</h2>
+    <div class="settings">
+      <div class="meta">Spalva</div>
+      <div class="swatches" id="swatches" role="radiogroup" aria-label="Kaladės spalva"></div>
+      <div class="row" style="margin-top:1rem">
+        <button type="button" id="deck-share" class="btn icon-btn" aria-label="Dalintis kaladę" title="Dalintis kaladę">
+          <svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 16V4"/><path d="M7 9l5-5 5 5"/><path d="M5 13v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6"/></svg>
+        </button>
+        <button type="button" id="deck-reset-stats" class="btn">Išvalyti mokymosi statistiką</button>
+        <button type="button" id="deck-delete" class="btn danger">Ištrinti kaladę</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mokymasis -->
+  <section id="view-study" class="view" hidden>
+    <div class="bar">
+      <button type="button" id="study-exit" class="btn ghost">‹ Išeiti</button>
+      <button type="button" id="study-mode" class="btn ghost small"></button>
+    </div>
+    <div class="status" id="study-status" aria-live="polite"></div>
+    <div class="progress" aria-hidden="true"><span id="progress-fill"></span></div>
+
+    <div class="stage">
+      <div class="stack">
+        <div class="peek" id="peek"></div>
+        <div class="wrap" id="wrap" tabindex="0" role="button" aria-label="Kortelė. Bakstelėk, kad apverstum. Rodyklės kairėn ir dešinėn pažymi atsakymą.">
+          <div class="card" id="card">
+            <div class="face front" id="face-front"><span class="tag" id="tag-front"></span><div class="text"><div class="tin"><img class="cimg" id="img-front" alt="" hidden><span id="txt-front"></span></div></div></div>
+            <div class="face back" id="face-back"><span class="tag" id="tag-back"></span><div class="text"><div class="tin"><img class="cimg" id="img-back" alt="" hidden><span id="txt-back"></span></div></div></div>
+          </div>
+          <div class="stamp yes" id="stamp-yes">Žinau</div>
+          <div class="stamp no" id="stamp-no">Nežinau</div>
+        </div>
+      </div>
+      <p class="hint">Bakstelėk kortelę, kad ją apverstum. Brauk į dešinę, jei žinai, į kairę, jei dar ne.</p>
+      <div class="actions">
+        <button type="button" id="btn-no" class="round no" aria-label="Nežinau">✕</button>
+        <button type="button" id="btn-undo" class="btn ghost small">Atšaukti</button>
+        <button type="button" id="btn-yes" class="round yes" aria-label="Žinau">✓</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pabaiga -->
+  <section id="view-summary" class="view" hidden></section>
+
+  <!-- Testas -->
+  <section id="view-test" class="view" hidden></section>
+
+  <!-- Rašymo praktika -->
+  <section id="view-write" class="view" hidden></section>
+
+  <!-- Greitas suporavimas -->
+  <section id="view-match" class="view" hidden></section>
+
+  <!-- Tiesa ar melas -->
+  <section id="view-tf" class="view" hidden></section>
+</main>
+<div id="dlg" class="dlg" hidden>
+  <div class="dlg-box" role="alertdialog" aria-modal="true" aria-labelledby="dlg-msg">
+    <p id="dlg-msg"></p>
+    <div class="row">
+      <button type="button" id="dlg-ok" class="btn danger">Ištrinti</button>
+      <button type="button" id="dlg-cancel" class="btn">Atšaukti</button>
+    </div>
+  </div>
+</div>
+<div id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(() => {
+'use strict';
+
+const $ = s => document.querySelector(s);
+const KEY = 'korteles.v1';
+
+/* ---------- Būsena ---------- */
+let state = { decks: [], session: null, reverse: false };
+
+/* ---------- Tema (šviesi / tamsi mėlyna / tamsi pilka / sistema) ---------- */
+const THEMES = [
+  { id: 'dark', label: 'Mėlyna', swatch: '#131922' },
+  { id: 'light', label: 'Balta', swatch: '#FFFFFF' },
+  { id: 'gray', label: 'Juoda', swatch: '#1C1C1E' }
+];
+
+function applyTheme(id) {
+  if (id) document.documentElement.setAttribute('data-theme', id);
+  else document.documentElement.removeAttribute('data-theme');
+  requestAnimationFrame(() => {
+    const bg = getComputedStyle(document.documentElement).getPropertyValue('--bg').trim();
+    const meta = document.querySelector('meta[name="theme-color"]');
+    if (bg && meta) meta.setAttribute('content', bg);
+  });
+}
+let current = 'home';
+let currentDeckId = null;
+let editingId = null;
+let summaryTab = 'missed';
+let busy = false;
+
+/* IndexedDB saugykla: vietoj localStorage (kurio riba ~5MB), nes čia telpa daug daugiau
+   nuotraukų. Duomenys visada laikomi atmintyje (kintamajame state), o į diską rašomi
+   asinchroniškai fone, todėl save() likusiai programos daliai atrodo kaip ir anksčiau. */
+const DB_NAME = 'korteles-db', DB_STORE = 'state', DB_KEY = 'app';
+let dbPromise = null;
+
+function openDB() {
+  if (dbPromise) return dbPromise;
+  dbPromise = new Promise((resolve, reject) => {
+    if (!window.indexedDB) { reject(new Error('no-idb')); return; }
+    const req = indexedDB.open(DB_NAME, 1);
+    req.onupgradeneeded = () => { if (!req.result.objectStoreNames.contains(DB_STORE)) req.result.createObjectStore(DB_STORE); };
+    req.onsuccess = () => resolve(req.result);
+    req.onerror = () => reject(req.error);
+  });
+  return dbPromise;
+}
+function idbGet(key) {
+  return openDB().then(db => new Promise((resolve, reject) => {
+    const rq = db.transaction(DB_STORE, 'readonly').objectStore(DB_STORE).get(key);
+    rq.onsuccess = () => resolve(rq.result);
+    rq.onerror = () => reject(rq.error);
+  }));
+}
+function idbSet(key, value) {
+  return openDB().then(db => new Promise((resolve, reject) => {
+    const tx = db.transaction(DB_STORE, 'readwrite');
+    tx.objectStore(DB_STORE).put(value, key);
+    tx.oncomplete = () => resolve(true);
+    tx.onerror = () => reject(tx.error);
+  }));
+}
+
+async function loadState() {
+  try {
+    const fromDB = await idbGet(DB_KEY);
+    if (fromDB && Array.isArray(fromDB.decks)) return Object.assign({ session: null, reverse: false }, fromDB);
+  } catch (e) {}
+  // Vienkartinė migracija iš senosios localStorage saugyklos, jei tokia rasta
+  try {
+    const legacy = JSON.parse(localStorage.getItem(KEY));
+    if (legacy && Array.isArray(legacy.decks)) {
+      const merged = Object.assign({ session: null, reverse: false }, legacy);
+      try { await idbSet(DB_KEY, merged); localStorage.removeItem(KEY); } catch (e) {}
+      return merged;
+    }
+  } catch (e) {}
+  return { decks: [], session: null, reverse: false };
+}
+
+// Rašo fone; visada grąžina true iš karto (IndexedDB riba daug didesnė, todėl
+// nebereikia sinchroniškai laukti patvirtinimo kaip anksčiau su localStorage).
+function save() {
+  idbSet(DB_KEY, state).catch(() => {
+    toast('Nepavyko išsaugoti. Patikrink įrenginio laisvą vietą.');
+  });
+  return true;
+}
+
+/* ---------- Pagalbinės ---------- */
+const uid = () => Math.random().toString(36).slice(2, 9) + Date.now().toString(36).slice(-4);
+const deckById = id => state.decks.find(d => d.id === id);
+
+const HUES = [210, 8, 150, 265, 28, 175, 330, 48];
+// Kiekviena kaladė gauna savo spalvą (pirmiausia dar nenaudotą)
+function ensureHues() {
+  let changed = false;
+  const used = new Set(state.decks.filter(d => typeof d.hue === 'number').map(d => d.hue));
+  state.decks.forEach((d, i) => {
+    if (typeof d.hue === 'number') return;
+    const free = HUES.find(x => !used.has(x));
+    d.hue = free !== undefined ? free : HUES[i % HUES.length];
+    used.add(d.hue);
+    changed = true;
+  });
+  if (changed) save();
+}
+
+function h(tag, props, ...kids) {
+  const el = document.createElement(tag);
+  for (const [k, v] of Object.entries(props || {})) {
+    if (k === 'class') el.className = v;
+    else if (k.startsWith('on')) el.addEventListener(k.slice(2), v);
+    else if (v === true) el.setAttribute(k, '');
+    else if (v !== false && v != null) el.setAttribute(k, v);
+  }
+  for (const kid of kids.flat(Infinity)) {
+    if (kid == null || kid === false) continue;
+    el.append(kid.nodeType ? kid : document.createTextNode(kid));
+  }
+  return el;
+}
+
+function plural(n, one, few, many) {
+  const m10 = n % 10, m100 = n % 100;
+  if (m10 === 1 && m100 !== 11) return one;
+  if (m10 === 0 || (m100 >= 11 && m100 <= 19)) return many;
+  return few;
+}
+const statsOf = d => (d.stats = d.stats || {});
+function ago(ts) {
+  if (!ts) return null;
+  const days = Math.floor((Date.now() - ts) / 864e5);
+  return days <= 0 ? 'šiandien' : days === 1 ? 'vakar' : `prieš ${days} d.`;
+}
+const imgEl = (src, cls = 'thumb') => src ? h('img', { class: cls, src, alt: '' }) : null;
+const okImg = v => typeof v === 'string' && v.startsWith('data:image/') && v.length < 1.5e6;
+// Kortelės tekstas ir nuotraukos sąrašuose
+function cardTexts(c) {
+  return [
+    c.q ? h('div', { class: 'cq' }, c.q) : null, imgEl(c.qi),
+    c.a ? h('div', { class: 'ca' }, c.a) : null, imgEl(c.ai)
+  ];
+}
+
+async function compressImage(file, max = 720, quality = 0.72) {
+  let bmp;
+  try { bmp = await createImageBitmap(file, { imageOrientation: 'from-image' }); }
+  catch (e) {
+    bmp = await new Promise((res, rej) => {
+      const img = new Image();
+      const u = URL.createObjectURL(file);
+      img.onload = () => { URL.revokeObjectURL(u); res(img); };
+      img.onerror = () => { URL.revokeObjectURL(u); rej(new Error('img')); };
+      img.src = u;
+    });
+  }
+  const w = bmp.naturalWidth || bmp.width, hh = bmp.naturalHeight || bmp.height;
+  const k = Math.min(1, max / Math.max(w, hh));
+  const cv = document.createElement('canvas');
+  cv.width = Math.max(1, Math.round(w * k));
+  cv.height = Math.max(1, Math.round(hh * k));
+  const ctx = cv.getContext('2d');
+  ctx.fillStyle = '#fff';
+  ctx.fillRect(0, 0, cv.width, cv.height);
+  ctx.drawImage(bmp, 0, 0, cv.width, cv.height);
+  if (bmp.close) bmp.close();
+  return cv.toDataURL('image/jpeg', quality);
+}
+
+const nCards = n => `${n} ${plural(n, 'kortelė', 'kortelės', 'kortelių')}`;
+
+function shuffle(a) {
+  a = a.slice();
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+let toastT;
+function toast(msg) {
+  const t = $('#toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(toastT);
+  toastT = setTimeout(() => t.classList.remove('show'), 2400);
+}
+
+/* ---------- Navigacija ---------- */
+function go(view, arg) {
+  if (view !== 'match') clearMatchTimer();
+  current = view;
+  if (view === 'deck' && arg) currentDeckId = arg;
+  document.querySelectorAll('.view').forEach(v => v.hidden = v.id !== 'view-' + view);
+  document.body.classList.toggle('studying', view === 'study');
+  if (view === 'home') renderHome();
+  else if (view === 'deck') renderDeck();
+  else if (view === 'study') renderStudy();
+  else if (view === 'summary') renderSummary();
+  else if (view === 'test') renderTest();
+  else if (view === 'write') renderWrite();
+  else if (view === 'match') renderMatch();
+  else if (view === 'tf') renderTF();
+  window.scrollTo(0, 0);
+}
+
+/* ---------- Kaladžių sąrašas ---------- */
+function activeSession(deckId) {
+  const s = state.session;
+  if (!s || (deckId && s.deckId !== deckId)) return null;
+  return (s.queue.length + s.missed.length) > 0 ? s : null;
+}
+
+function fmtMb(mb) {
+  return mb >= 1000 ? (mb / 1000).toFixed(1).replace('.', ',') + ' GB' : mb.toFixed(mb < 10 ? 1 : 0).replace('.', ',') + ' MB';
+}
+function renderStorageInfo() {
+  const el = $('#storage-info');
+  let chars = 0;
+  try { chars = JSON.stringify(state).length; } catch (e) {}
+  const usedMb = chars / 1e6;
+  const hasImg = state.decks.some(d => d.cards.some(c => c.qi || c.ai));
+  el.hidden = !(hasImg || usedMb > 1);
+  el.classList.remove('warn');
+  el.textContent = `Saugykla: ${fmtMb(usedMb)} panaudota.`;
+  if (navigator.storage && navigator.storage.estimate) {
+    navigator.storage.estimate().then(est => {
+      if (el.hidden || !est || !est.quota) return;
+      const quotaMb = est.quota / 1e6, usageMb = (est.usage || 0) / 1e6;
+      const pct = quotaMb ? usageMb / quotaMb : 0;
+      el.classList.toggle('warn', pct > 0.9);
+      el.textContent = `Saugykla: ${fmtMb(usedMb)} iš ${fmtMb(quotaMb)} leidžiamos` + (pct > 0.9 ? '. Beveik pilna, padaryk kopiją.' : '.');
+    }).catch(() => {});
+  }
+}
+
+function renderHome() {
+  renderStorageInfo();
+  renderBackupNote();
+  ensureHues();
+  const list = $('#deck-list');
+  list.className = 'decks';
+  list.replaceChildren();
+  if (!state.decks.length) {
+    list.append(h('div', { class: 'empty' },
+      h('p', {}, 'Kaladžių dar nėra. Susikurk pirmąją aukščiau arba išbandyk pavyzdį.'),
+      h('button', { class: 'btn', onclick: addSample }, 'Įkelti pavyzdinę kaladę')));
+    return;
+  }
+  for (const d of state.decks) {
+    const n = d.cards.length;
+    const s = activeSession(d.id);
+    const st = d.stats || {};
+    const foot = [];
+    if (s) {
+      foot.push(
+        h('div', { class: 'deck-bar', 'aria-hidden': 'true' }, h('span', { style: `width:${s.total ? (s.known / s.total) * 100 : 0}%` })),
+        h('div', { class: 'deck-meta' }, `Mokymasis vyksta: išmokta ${s.known} iš ${s.total}`));
+    } else if (!n) {
+      foot.push(h('div', { class: 'deck-meta' }, 'Tuščia. Bakstelėk ir pridėk kortelių'));
+    } else {
+      const last = ago(st.lastStudied);
+      foot.push(h('div', { class: 'deck-meta' }, last ? `Mokytasi ${last}` : 'Dar nemokyta'));
+    }
+    foot.push(h('span', { class: 'chev', 'aria-hidden': 'true' }, '›'));
+    const open = () => go('deck', d.id);
+    list.append(h('article', {
+      class: 'deck hued', style: `--h:${d.hue}`, 'data-stack': n > 5 ? '2' : n > 1 ? '1' : '0',
+      role: 'button', tabindex: '0', 'aria-label': `Atidaryti kaladę ${d.name}`,
+      onclick: open,
+      onkeydown: e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(); } }
+    },
+      h('div', { class: 'deck-head' },
+        h('div', { class: 'deck-name' }, d.name),
+        h('div', { class: 'deck-count' }, h('b', {}, String(n)), h('span', {}, plural(n, 'kortelė', 'kortelės', 'kortelių')))),
+      h('div', { class: 'deck-body' }, h('div', { class: 'deck-foot' }, foot))));
+  }
+}
+
+function addSample() {
+  const pairs = [
+    ['dog', 'šuo'], ['cat', 'katė'], ['to borrow', 'skolintis (iš kažko)'],
+    ['achieve', 'pasiekti'], ['Vilnius', 'Lietuvos sostinė'], ['Fotosintezė', 'Procesas, kurio metu augalai iš šviesos, vandens ir CO₂ gamina cukrų']
+  ];
+  const d = { id: uid(), name: 'Pavyzdys', cards: pairs.map(([q, a]) => ({ id: uid(), q, a })) };
+  state.decks.push(d);
+  save();
+  renderHome();
+}
+
+function ask(msg, okLabel = 'Ištrinti') {
+  return new Promise(resolve => {
+    const dlg = $('#dlg'), ok = $('#dlg-ok'), cancel = $('#dlg-cancel');
+    $('#dlg-msg').textContent = msg;
+    ok.textContent = okLabel;
+    dlg.hidden = false;
+    ok.focus();
+    const done = v => { dlg.hidden = true; ok.onclick = null; cancel.onclick = null; resolve(v); };
+    ok.onclick = () => done(true);
+    cancel.onclick = () => done(false);
+  });
+}
+
+// Supranta: "klausimas ; atsakymas", "klausimas | atsakymas", Tab ir Markdown lenteles
+function parseCards(text) {
+  const clean = s => (s || '').replace(/\*\*/g, '').trim();
+  const isSep = l => /^\|?[\s:|-]+\|?$/.test(l) && l.includes('-');
+  const lines = text.split('\n').map(l => l.trim()).filter(Boolean);
+  const cards = [];
+  let skipped = 0;
+  lines.forEach((line, i) => {
+    if (isSep(line)) return;
+    let q = '', a = '';
+    if (line.startsWith('|')) {
+      if (isSep(lines[i + 1] || '')) return; // lentelės antraštė
+      const cells = line.split('|').slice(1);
+      if (line.endsWith('|')) cells.pop();
+      q = clean(cells[0]);
+      a = clean(cells[1]);
+    } else {
+      let k = -1;
+      for (const sep of ['\t', ';', '|']) {
+        k = line.indexOf(sep);
+        if (k > 0) break;
+      }
+      if (k > 0) { q = clean(line.slice(0, k)); a = clean(line.slice(k + 1)); }
+    }
+    if (q && a) cards.push({ id: uid(), q, a }); else skipped++;
+  });
+  return { cards, skipped };
+}
+
+function createDeck() {
+  const inp = $('#new-deck-name');
+  const name = inp.value.trim();
+  if (!name) { toast('Įrašyk kaladės pavadinimą.'); inp.focus(); return; }
+  const d = { id: uid(), name, cards: [] };
+  state.decks.push(d);
+  save();
+  inp.value = '';
+  go('deck', d.id);
+}
+$('#btn-new-deck').addEventListener('click', createDeck);
+$('#new-deck-name').addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); createDeck(); } });
+
+function togglePaste(open) {
+  const panel = $('#paste-panel');
+  panel.hidden = !open;
+  $('#btn-paste-toggle').setAttribute('aria-expanded', String(open));
+  if (open) $('#paste-text').focus();
+}
+$('#btn-paste-toggle').addEventListener('click', () => togglePaste($('#paste-panel').hidden));
+$('#paste-cancel').addEventListener('click', () => togglePaste(false));
+
+$('#paste-create').addEventListener('click', () => {
+  const nameInp = $('#new-deck-name');
+  const name = nameInp.value.trim();
+  if (!name) { toast('Pirmiausia įrašyk kaladės pavadinimą.'); nameInp.focus(); return; }
+  const { cards, skipped } = parseCards($('#paste-text').value);
+  if (!cards.length) { toast('Nerasta tinkamų eilučių. Patikrink formatą.'); return; }
+  const d = { id: uid(), name: name.slice(0, 60), cards };
+  state.decks.push(d);
+  save();
+  nameInp.value = '';
+  $('#paste-text').value = '';
+  togglePaste(false);
+  go('deck', d.id);
+  toast(`Sukurta: ${nCards(cards.length)}` + (skipped ? `, praleista eilučių: ${skipped}` : ''));
+});
+
+function exportBackup() {
+  const blob = new Blob([JSON.stringify({ decks: state.decks }, null, 2)], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = h('a', { href: url, download: 'korteles.json' });
+  document.body.append(a);
+  a.click();
+  a.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+  state.lastBackup = Date.now();
+  save();
+  renderBackupNote();
+  toast('Kopija paruošta. Patikrink atsisiuntimų aplanką.');
+}
+function slugify(name) {
+  const s = (name || 'kaladė').normalize('NFKD').replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+  return s || 'kaladė';
+}
+
+async function shareDeck(d) {
+  const filename = `kortelės-${slugify(d.name)}.json`;
+  const json = JSON.stringify({ decks: [d] }, null, 2);
+  const file = new File([json], filename, { type: 'application/json' });
+  if (navigator.canShare && navigator.canShare({ files: [file] })) {
+    try {
+      await navigator.share({ files: [file], title: d.name });
+      return;
+    } catch (e) {
+      if (e && e.name === 'AbortError') return; // žmogus pats atšaukė
+      // nepavyko pasidalinti – tęsiam prie atsisiuntimo žemiau
+    }
+  }
+  const blob = new Blob([json], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = h('a', { href: url, download: filename });
+  document.body.append(a);
+  a.click();
+  a.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+  toast('Failas paruoštas. Patikrink atsisiuntimų aplanką.');
+}
+$('#deck-share').addEventListener('click', () => {
+  const d = deckById(currentDeckId);
+  if (d) shareDeck(d);
+});
+
+$('#btn-export').addEventListener('click', exportBackup);
+$('#backup-now').addEventListener('click', exportBackup);
+$('#backup-later').addEventListener('click', () => { state.backupSnooze = Date.now(); save(); renderBackupNote(); });
+
+function renderBackupNote() {
+  const total = state.decks.reduce((n, d) => n + d.cards.length, 0);
+  const day = 864e5;
+  const sinceBackup = state.lastBackup ? (Date.now() - state.lastBackup) / day : Infinity;
+  const sinceSnooze = state.backupSnooze ? (Date.now() - state.backupSnooze) / day : Infinity;
+  const show = total > 0 && sinceBackup > 14 && sinceSnooze > 3;
+  $('#backup-note').hidden = !show;
+  if (show) {
+    $('#backup-text').textContent = state.lastBackup
+      ? `Paskutinė atsarginė kopija daryta prieš ${Math.floor(sinceBackup)} d. Pasidaryk naują, kad nepamestum kaladžių.`
+      : 'Atsarginė kopija dar nedaryta. Ją verta turėti, jei telefonas ar naršyklė išvalytų duomenis.';
+  }
+}
+
+$('#file-import').addEventListener('change', async e => {
+  const f = e.target.files[0];
+  e.target.value = '';
+  if (!f) return;
+  try {
+    const data = JSON.parse(await f.text());
+    const decks = (data.decks || [])
+      .filter(d => d && typeof d.name === 'string' && Array.isArray(d.cards))
+      .map(d => ({
+        id: uid(),
+        name: d.name.slice(0, 60),
+        hue: Number.isFinite(d.hue) ? d.hue : undefined,
+        cards: d.cards
+          .filter(c => c && typeof c.q === 'string' && typeof c.a === 'string' &&
+            (c.q.trim() || okImg(c.qi)) && (c.a.trim() || okImg(c.ai)))
+          .map(c => {
+            const o = { id: uid(), q: c.q, a: c.a };
+            if (Number.isFinite(c.miss) && c.miss > 0) o.miss = Math.floor(c.miss);
+            if (okImg(c.qi)) o.qi = c.qi;
+            if (okImg(c.ai)) o.ai = c.ai;
+            if (c.star) o.star = true;
+            if (typeof c.known === 'boolean') o.known = c.known;
+            return o;
+          })
+      }));
+    if (!decks.length) throw new Error('empty');
+    // Praleidžiam kaladės kopijas, kurios jau yra (tas pats pavadinimas ir tos pačios kortelės)
+    const sig = d => (d.name || '').trim().toLowerCase() + '::' +
+      (d.cards || []).map(c => (c.q || '').trim().toLowerCase() + '|' + (c.a || '').trim().toLowerCase()).sort().join('\n');
+    const known = new Set(state.decks.map(sig));
+    const fresh = [];
+    let dupes = 0;
+    for (const d of decks) {
+      const s = sig(d);
+      if (known.has(s)) { dupes++; continue; }
+      known.add(s);
+      fresh.push(d);
+    }
+    state.decks.push(...fresh);
+    save();
+    renderHome();
+    if (fresh.length) toast(`Įkelta kaladžių: ${fresh.length}` + (dupes ? `, praleista dublikatų: ${dupes}` : ''));
+    else toast(dupes ? 'Visos kaladės jau buvo įkeltos anksčiau.' : 'Nerasta tinkamų kaladžių.');
+  } catch (err) {
+    toast('Nepavyko nuskaityti failo.');
+  }
+});
+
+/* ---------- Kortelių peržiūra kaladės lange (peek) ---------- */
+let peek = null;
+let starOnly = false;
+
+function effectiveCards(d) { return starOnly ? d.cards.filter(c => c.star) : d.cards; }
+
+function initPeek(d, shuffleOn, firstAnswer) {
+  const pool = effectiveCards(d);
+  peek = { deckId: d.id, order: shuffleOn ? shuffle(pool.map(c => c.id)) : pool.map(c => c.id), i: 0, shuffleOn, firstAnswer };
+}
+
+function ensurePeek(d) {
+  if (!peek || peek.deckId !== d.id) { initPeek(d, true, false); return; }
+  const pool = effectiveCards(d);
+  const ids = new Set(pool.map(c => c.id));
+  peek.order = peek.order.filter(id => ids.has(id));
+  for (const c of pool) if (!peek.order.includes(c.id)) peek.order.push(c.id);
+  if (peek.i >= peek.order.length) peek.i = Math.max(0, peek.order.length - 1);
+}
+
+function setPeekFace(side, text, img) {
+  const im = $('#peek-img-' + side), tx = $('#peek-txt-' + side);
+  tx.textContent = text || '';
+  tx.hidden = !text;
+  if (img) {
+    im.onload = () => fitText($('#peek-face-' + side + ' .text'));
+    im.src = img;
+    im.hidden = false;
+    im.classList.toggle('solo', !text);
+  } else {
+    im.onload = null;
+    im.removeAttribute('src');
+    im.hidden = true;
+  }
+}
+
+function fitPeek() {
+  document.querySelectorAll('#peek-wrap .text').forEach(fitText);
+}
+
+function resetPeekCard() {
+  const card = $('#peek-card'), wrap = $('#peek-wrap');
+  card.classList.add('no-anim');
+  card.classList.remove('flipped');
+  void wrap.offsetWidth;
+  card.classList.remove('no-anim');
+}
+
+function renderPeekCard() {
+  const d = deckById(currentDeckId);
+  if (!d) return;
+  ensurePeek(d);
+  const has = peek.order.length > 0;
+  $('#peek-stackwrap').hidden = !has;
+  $('#peek-hint').hidden = !has;
+  $('#peek-nav').hidden = !has;
+  $('#peek-empty').hidden = has;
+  if (!has) {
+    $('#peek-empty-text').textContent = starOnly ? 'Nėra pažymėtų kortelių.' : 'Kaladėje dar nėra kortelių. Pridėk jų žemiau.';
+    $('#peek-shuffle').checked = peek.shuffleOn;
+    $('#peek-firstans').checked = peek.firstAnswer;
+    return;
+  }
+  const c = d.cards.find(x => x.id === peek.order[peek.i]);
+  if (!c) return;
+  const front = peek.firstAnswer ? c.a : c.q, back = peek.firstAnswer ? c.q : c.a;
+  const frontImg = peek.firstAnswer ? c.ai : c.qi, backImg = peek.firstAnswer ? c.qi : c.ai;
+  setPeekFace('front', front, frontImg);
+  setPeekFace('back', back, backImg);
+  $('#peek-tag-front').textContent = peek.firstAnswer ? 'Atsakymas' : 'Sąvoka';
+  $('#peek-tag-back').textContent = peek.firstAnswer ? 'Sąvoka' : 'Atsakymas';
+  $('#peek-pos').textContent = `${peek.i + 1} / ${peek.order.length}`;
+  $('#peek-shuffle').checked = peek.shuffleOn;
+  $('#peek-firstans').checked = peek.firstAnswer;
+  resetPeekCard();
+  fitPeek();
+}
+
+function peekFlip() {
+  if (!peek || !peek.order.length) return;
+  $('#peek-card').classList.toggle('flipped');
+}
+
+function peekNav(dir) {
+  if (!peek || !peek.order.length) return;
+  peek.i = (peek.i + dir + peek.order.length) % peek.order.length;
+  renderPeekCard();
+}
+
+$('#peek-wrap').addEventListener('click', peekFlip);
+$('#peek-wrap').addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); peekFlip(); } });
+$('#peek-prev').addEventListener('click', () => peekNav(-1));
+$('#peek-next').addEventListener('click', () => peekNav(1));
+$('#peek-shuffle').addEventListener('change', () => {
+  const d = deckById(currentDeckId);
+  if (!d) return;
+  initPeek(d, $('#peek-shuffle').checked, peek ? peek.firstAnswer : false);
+  renderPeekCard();
+});
+$('#peek-firstans').addEventListener('change', () => {
+  if (!peek) return;
+  peek.firstAnswer = $('#peek-firstans').checked;
+  renderPeekCard();
+});
+$('#staronly-toggle').addEventListener('change', () => {
+  starOnly = $('#staronly-toggle').checked;
+  renderHub();
+  renderCardList();
+});
+
+/* ---------- Kaladės redagavimas ---------- */
+function renderDeck() {
+  const d = deckById(currentDeckId);
+  if (!d) return go('home');
+  ensureHues();
+  $('#deck-name').value = d.name;
+  renderSwatches();
+  resetForm();
+  renderCardList();
+}
+
+function updateDeckMeta(d) {
+  const n = d.cards.length;
+  const starred = d.cards.filter(c => c.star).length;
+  const st = d.stats || {};
+  const last = ago(st.lastStudied);
+  $('#deck-meta').textContent = `${n} ${plural(n, 'kortelė', 'kortelės', 'kortelių')} · ${starred} pažymėta · ${last ? 'Mokytasi ' + last : 'Dar nemokyta'}`;
+}
+
+function tabtile(icon, title, subtitle, opts) {
+  const o = opts || {};
+  return h('button', {
+    type: 'button', class: 'tabtile' + (o.primary ? ' primary' : '') + (o.disabled ? ' disabled' : ''),
+    disabled: !!o.disabled, onclick: o.disabled ? null : o.onclick
+  },
+    h('span', { class: 'tabicon', 'aria-hidden': 'true' }, icon),
+    h('span', { class: 'tabtext' }, h('b', {}, title), h('span', {}, subtitle)),
+    h('span', { class: 'tabchev', 'aria-hidden': 'true' }, '›'));
+}
+
+function renderTabsRow(d) {
+  const pool = effectiveCards(d);
+  const n = pool.length;
+  const s = activeSession(d.id);
+  const writable = pool.filter(c => (c.a || '').trim());
+  const ids = starOnly ? pool.map(c => c.id) : undefined;
+  const scrollToForm = () => { $('#card-form').scrollIntoView({ behavior: 'smooth', block: 'center' }); $('#f-q').focus(); };
+  const emptyLabel = starOnly ? 'Nėra pažymėtų' : 'Pridėk kortelių';
+  return h('div', { class: 'tabsrow' },
+    tabtile('▤', 'Kortelės', !n ? emptyLabel : (s ? `Tęsti mokymąsi (${s.queue.length + s.missed.length})` : 'Pradėti mokymąsi'),
+      { primary: true, disabled: !n, onclick: () => (n ? (s ? go('study') : begin(d.id, ids)) : scrollToForm) }),
+    tabtile('✎', 'Praktika raštu', 'Atsakyk iš atminties', { disabled: !writable.length, onclick: () => startWrite(d.id, ids) }),
+    tabtile('☑', 'Testas', 'Pasitikrink žinias', { disabled: n < 2, onclick: () => startTest(d.id, ids) }),
+    tabtile('▦', 'Sujunk poras', 'Blokeliai ir laikmatis', { disabled: n < 2, onclick: () => startMatch(d.id, ids) }),
+    tabtile('✓', 'Tiesa ar melas', 'Atpažink teisingą teiginį', { disabled: n < 2, onclick: () => startTF(d.id, ids) }));
+}
+
+// Apskrito rodiklio SVG žymima procentine reikšme (statinė, saugu naudoti innerHTML)
+function ringHTML(pct) {
+  const r = 52, circ = 2 * Math.PI * r;
+  const clamped = Math.max(0, Math.min(100, pct));
+  const off = circ * (1 - clamped / 100);
+  return `<svg class="ring" viewBox="0 0 120 120" aria-hidden="true">
+    <circle class="ring-bg" cx="60" cy="60" r="${r}"></circle>
+    <circle class="ring-fg" cx="60" cy="60" r="${r}" style="stroke-dasharray:${circ};stroke-dashoffset:${off}"></circle>
+  </svg>`;
+}
+
+function renderProgressPanel(d) {
+  const n = d.cards.length;
+  const st = d.stats || {};
+  const known = d.cards.filter(c => c.known).length;
+  const pct = n ? Math.round((known / n) * 100) : 0;
+  const hard = d.cards.filter(c => c.miss > 0);
+  const s = activeSession(d.id);
+  const ring = h('div', { class: 'ring-wrap' });
+  ring.innerHTML = ringHTML(pct);
+  ring.append(h('div', { class: 'ring-label' }, h('b', {}, pct + '%'), h('span', {}, 'išmokta')));
+  return h('div', { class: 'progress-card' },
+    h('h3', {}, 'Tavo pažanga'),
+    s ? h('p', { class: 'meta', style: 'margin:0 0 .7rem' },
+      `Sesija: raundas ${s.round}, liko ${s.queue.length + s.missed.length}`,
+      h('button', { type: 'button', class: 'btn ghost mini', onclick: () => begin(d.id) }, 'Iš naujo')) : null,
+    ring,
+    h('ul', { class: 'ring-stats' },
+      h('li', {}, 'Išmokta', h('b', {}, `${known}/${n}`)),
+      h('li', {}, 'Dar mokausi', h('b', {}, String(n - known))),
+      h('li', {}, 'Geriausias testas', h('b', {}, st.best != null ? st.best + '%' : '–'))),
+    hard.length ? h('button', { type: 'button', class: 'btn', onclick: () => begin(d.id, hard.map(c => c.id)) }, `Kartoti sunkias (${hard.length})`) : null);
+}
+
+function renderHub() {
+  const d = deckById(currentDeckId);
+  if (!d) return;
+  updateDeckMeta(d);
+  const starred = d.cards.filter(c => c.star).length;
+  if (!starred && starOnly) { starOnly = false; }
+  $('#staronly-toggle').checked = starOnly;
+  $('#staronly-toggle').disabled = !starred;
+  $('#staronly-count').textContent = String(starred);
+  $('#tabsrow').replaceChildren(renderTabsRow(d));
+  $('#progress-panel').replaceChildren(renderProgressPanel(d));
+  renderPeekCard();
+}
+
+function renderSwatches() {
+  const d = deckById(currentDeckId);
+  $('#view-deck').style.setProperty('--h', d.hue);
+  const box = $('#swatches');
+  box.replaceChildren(...HUES.map(hue => {
+    const b = h('button', { type: 'button', class: 'swatch hued', role: 'radio', 'aria-checked': String(hue === d.hue), 'aria-label': 'Spalva', style: `--h:${hue}`, onclick: () => { d.hue = hue; save(); renderSwatches(); } });
+    return b;
+  }));
+}
+
+function renderCardTools(d) {
+  const starred = d.cards.filter(c => c.star).length;
+  $('#card-tools').replaceChildren(
+    h('button', { type: 'button', class: 'btn ghost small' + (starOnly ? ' primary' : ''), onclick: () => { starOnly = !starOnly; renderHub(); renderCardList(); } }, `★ Pažymėtos (${starred})`),
+    h('button', { type: 'button', class: 'btn small', onclick: () => { $('#f-q').scrollIntoView({ behavior: 'smooth', block: 'center' }); $('#f-q').focus(); } }, '+ Pridėti kortelę'));
+}
+
+function toggleStar(id) {
+  const d = deckById(currentDeckId);
+  const c = d && d.cards.find(x => x.id === id);
+  if (!c) return;
+  c.star = !c.star;
+  save();
+  renderCardList();
+}
+
+function renderCardList() {
+  const d = deckById(currentDeckId);
+  $('#cards-heading').textContent = d.cards.length ? `Kortelės (${d.cards.length})` : 'Kortelės';
+  renderHub();
+  renderCardTools(d);
+  const ul = $('#card-list');
+  ul.replaceChildren();
+  const list = starOnly ? d.cards.filter(c => c.star) : d.cards;
+  if (!d.cards.length) {
+    ul.append(h('li', { class: 'empty' }, 'Kaladėje dar nėra kortelių. Įrašyk pirmąją aukščiau.'));
+    return;
+  }
+  if (!list.length) {
+    ul.append(h('li', { class: 'empty' }, 'Nėra pažymėtų kortelių.'));
+    return;
+  }
+  for (const c of list.slice().reverse()) {
+    ul.append(h('li', { class: 'crow' },
+      h('div', { class: 'ctext' }, cardTexts(c)),
+      h('div', { class: 'cact' },
+        h('button', { type: 'button', class: 'star-btn' + (c.star ? ' on' : ''), 'aria-label': c.star ? 'Nebežymėti' : 'Pažymėti', onclick: () => toggleStar(c.id) }, c.star ? '★' : '☆'),
+        h('button', { type: 'button', class: 'btn ghost small', onclick: () => editCard(c.id) }, 'Keisti'),
+        h('button', { type: 'button', class: 'btn ghost small danger-text', onclick: () => delCard(c.id) }, 'Trinti'))));
+  }
+}
+
+let formImgs = { q: null, a: null };
+
+function renderImgRow(side) {
+  const src = formImgs[side];
+  $(`#f-${side}-img`).replaceChildren(...[
+    h('label', { class: 'btn small' },
+      src ? 'Pakeisti nuotrauką' : 'Pridėti nuotrauką',
+      h('input', { type: 'file', accept: 'image/*', hidden: true, onchange: e => onPickImage(side, e) })),
+    src ? h('img', { class: 'thumb', src, alt: 'Pasirinkta nuotrauka' }) : null,
+    src ? h('button', { type: 'button', class: 'btn ghost small danger-text', onclick: () => { formImgs[side] = null; renderImgRow(side); } }, 'Pašalinti') : null
+  ].filter(Boolean));
+}
+
+async function onPickImage(side, e) {
+  const f = e.target.files && e.target.files[0];
+  if (!f) return;
+  if (!f.type.startsWith('image/')) { toast('Pasirink paveikslėlio failą.'); return; }
+  toast('Apdorojama nuotrauka…');
+  try {
+    formImgs[side] = await compressImage(f);
+    renderImgRow(side);
+    toast('Nuotrauka pridėta');
+  } catch (err) {
+    toast('Nepavyko nuskaityti nuotraukos.');
+  }
+}
+
+function resetForm() {
+  editingId = null;
+  $('#f-q').value = '';
+  $('#f-a').value = '';
+  formImgs = { q: null, a: null };
+  renderImgRow('q');
+  renderImgRow('a');
+  $('#f-submit').textContent = 'Pridėti kortelę';
+  $('#f-cancel').hidden = true;
+}
+
+function editCard(id) {
+  const c = deckById(currentDeckId).cards.find(x => x.id === id);
+  if (!c) return;
+  editingId = id;
+  $('#f-q').value = c.q;
+  $('#f-a').value = c.a;
+  formImgs = { q: c.qi || null, a: c.ai || null };
+  renderImgRow('q');
+  renderImgRow('a');
+  $('#f-submit').textContent = 'Išsaugoti pakeitimus';
+  $('#f-cancel').hidden = false;
+  $('#card-form').scrollIntoView({ behavior: 'smooth', block: 'center' });
+  $('#f-q').focus();
+}
+
+async function delCard(id) {
+  if (!(await ask('Ištrinti šią kortelę?'))) return;
+  const d = deckById(currentDeckId);
+  d.cards = d.cards.filter(c => c.id !== id);
+  if (editingId === id) resetForm();
+  save();
+  renderCardList();
+}
+
+function saveCard() {
+  const d = deckById(currentDeckId);
+  const q = $('#f-q').value.trim(), a = $('#f-a').value.trim();
+  const qi = formImgs.q, ai = formImgs.a;
+  if ((!q && !qi) || (!a && !ai)) { toast('Kiekvienoje pusėje įrašyk tekstą arba pridėk nuotrauką.'); return; }
+  const fresh = { id: editingId || uid(), q, a };
+  const prev = editingId && d.cards.find(x => x.id === editingId);
+  if (prev && prev.miss) fresh.miss = prev.miss;
+  if (prev && prev.star) fresh.star = true;
+  if (prev && typeof prev.known === 'boolean') fresh.known = prev.known;
+  if (qi) fresh.qi = qi;
+  if (ai) fresh.ai = ai;
+  let idx = -1, old = null;
+  if (editingId) {
+    idx = d.cards.findIndex(x => x.id === editingId);
+    if (idx >= 0) { old = d.cards[idx]; d.cards[idx] = fresh; } else d.cards.push(fresh);
+  } else {
+    d.cards.push(fresh);
+  }
+  if (!save()) { // atmintis pilna: grąžinam kaip buvo
+    if (old) d.cards[idx] = old; else d.cards.pop();
+    return;
+  }
+  toast(editingId ? 'Pakeitimai išsaugoti' : 'Kortelė pridėta');
+  resetForm();
+  renderCardList();
+  $('#f-q').focus();
+}
+$('#f-submit').addEventListener('click', saveCard);
+$('#f-cancel').addEventListener('click', resetForm);
+for (const sel of ['#f-q', '#f-a']) {
+  $(sel).addEventListener('keydown', e => {
+    if (e.key === 'Enter' && (e.ctrlKey || e.metaKey)) { e.preventDefault(); saveCard(); }
+  });
+}
+
+$('#bulk-add').addEventListener('click', () => {
+  const d = deckById(currentDeckId);
+  const { cards, skipped } = parseCards($('#bulk').value);
+  const added = cards.length;
+  d.cards.push(...cards);
+  if (added) { save(); renderCardList(); $('#bulk').value = ''; }
+  toast(added ? `Pridėta: ${nCards(added)}` + (skipped ? `, praleista eilučių: ${skipped}` : '') : 'Nerasta tinkamų eilučių.');
+});
+
+$('#deck-name').addEventListener('change', e => {
+  const d = deckById(currentDeckId);
+  const v = e.target.value.trim();
+  if (v) { d.name = v.slice(0, 60); save(); } else e.target.value = d.name;
+});
+function renderThemeMenu() {
+  const menu = $('#theme-menu');
+  menu.replaceChildren(...THEMES.map(t => h('button', {
+    type: 'button', class: 'theme-opt', role: 'menuitemradio', 'aria-checked': String((state.theme || 'light') === t.id),
+    onclick: () => { state.theme = t.id; save(); applyTheme(t.id); closeThemeMenu(); }
+  }, h('span', { class: 'theme-swatch', style: `background:${t.swatch}` }), t.label)));
+}
+function openThemeMenu() { renderThemeMenu(); $('#theme-menu').hidden = false; $('#theme-btn').setAttribute('aria-expanded', 'true'); }
+function closeThemeMenu() { $('#theme-menu').hidden = true; $('#theme-btn').setAttribute('aria-expanded', 'false'); }
+$('#theme-btn').addEventListener('click', e => {
+  e.stopPropagation();
+  if ($('#theme-menu').hidden) openThemeMenu(); else closeThemeMenu();
+});
+document.addEventListener('click', e => {
+  if (!$('#theme-menu').hidden && !e.target.closest('.theme-picker')) closeThemeMenu();
+});
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeThemeMenu(); });
+
+$('#deck-back').addEventListener('click', () => go('home'));
+$('#deck-reset-stats').addEventListener('click', async () => {
+  const d = deckById(currentDeckId);
+  if (!(await ask('Išvalyti šios kaladės mokymosi statistiką (sunkias korteles, testų rezultatus)?', 'Išvalyti'))) return;
+  d.stats = {};
+  d.cards.forEach(c => { delete c.miss; delete c.known; });
+  save();
+  renderHub();
+  toast('Statistika išvalyta');
+});
+$('#deck-delete').addEventListener('click', async () => {
+  const d = deckById(currentDeckId);
+  if (!(await ask(`Ištrinti kaladę „${d.name}“ su visomis kortelėmis?`))) return;
+  state.decks = state.decks.filter(x => x.id !== d.id);
+  if (state.session && state.session.deckId === d.id) state.session = null;
+  save();
+  go('home');
+});
+
+/* ---------- Mokymosi seansas ---------- */
+async function begin(deckId, ids) {
+  const d = deckById(deckId);
+  if (!d || !d.cards.length) return;
+  const pool = ids && ids.length ? ids.filter(id => d.cards.some(c => c.id === id)) : d.cards.map(c => c.id);
+  if (!pool.length) return;
+  const old = activeSession();
+  if (old && old.deckId !== deckId && !(await ask('Kitos kaladės mokymosi pažanga bus prarasta. Pradėti naują?', 'Pradėti naują'))) return;
+  state.session = {
+    deckId, queue: shuffle(pool), missed: [],
+    known: 0, knownIds: [], round: 1, total: pool.length, history: [], misses: {}
+  };
+  summaryTab = 'missed';
+  save();
+  go('study');
+}
+
+function cleanSession() {
+  const s = state.session;
+  if (!s) return;
+  const d = deckById(s.deckId);
+  if (!d) { state.session = null; return; }
+  const ids = new Set(d.cards.map(c => c.id));
+  s.queue = s.queue.filter(i => ids.has(i));
+  s.missed = s.missed.filter(i => ids.has(i));
+  if (!s.knownIds) s.knownIds = d.cards.map(c => c.id).filter(i => !s.queue.includes(i) && !s.missed.includes(i));
+  s.knownIds = s.knownIds.filter(i => ids.has(i));
+  s.known = s.knownIds.length;
+  s.total = s.known + s.queue.length + s.missed.length;
+}
+
+function renderStudy() {
+  cleanSession();
+  if (!state.session) return go('home');
+  if (!state.session.queue.length) return go('summary'); // raundas baigtas
+  save();
+  renderStudyCard();
+}
+
+const wrap = $('#wrap'), card = $('#card');
+const stampYes = $('#stamp-yes'), stampNo = $('#stamp-no');
+
+function sizeOf(t) {
+  const n = t.length;
+  return n < 30 ? 'l' : n < 90 ? 'm' : n < 200 ? 's' : 'xs';
+}
+
+// Sumažina tekstą, kol jis telpa kortelėje
+function fitText(el) {
+  el.style.fontSize = '';
+  let fs = parseFloat(getComputedStyle(el).fontSize);
+  while (el.scrollHeight > el.clientHeight + 1 && fs > 13) {
+    fs -= 1;
+    el.style.fontSize = fs + 'px';
+  }
+}
+function fitAll() {
+  if (current !== 'study') return;
+  document.querySelectorAll('#view-study .text').forEach(fitText);
+}
+window.addEventListener('resize', () => { fitAll(); if (current === 'deck') fitPeek(); });
+window.addEventListener('orientationchange', () => setTimeout(() => { fitAll(); if (current === 'deck') fitPeek(); }, 250));
+
+function resetCard() {
+  card.classList.add('no-anim');
+  card.classList.remove('flipped');
+  wrap.style.transition = 'none';
+  wrap.style.transform = '';
+  wrap.style.opacity = '';
+  stampYes.style.opacity = 0;
+  stampNo.style.opacity = 0;
+  void wrap.offsetWidth;
+  card.classList.remove('no-anim');
+  wrap.style.transition = '';
+}
+
+function setFace(side, text, img) {
+  const im = $('#img-' + side), tx = $('#txt-' + side);
+  tx.textContent = text;
+  tx.hidden = !text;
+  if (img) {
+    im.onload = fitAll;
+    im.src = img;
+    im.hidden = false;
+    im.classList.toggle('solo', !text);
+  } else {
+    im.onload = null;
+    im.removeAttribute('src');
+    im.hidden = true;
+  }
+}
+
+function renderStudyCard() {
+  const s = state.session;
+  const d = deckById(s.deckId);
+  const c = d.cards.find(x => x.id === s.queue[0]);
+  if (!c) return;
+  const front = state.reverse ? c.a : c.q;
+  const back = state.reverse ? c.q : c.a;
+  setFace('front', front, state.reverse ? c.ai : c.qi);
+  setFace('back', back, state.reverse ? c.qi : c.ai);
+  $('#tag-front').textContent = state.reverse ? 'Atsakymas' : 'Klausimas';
+  $('#tag-back').textContent = state.reverse ? 'Klausimas' : 'Atsakymas';
+  $('#face-front').dataset.size = sizeOf(front);
+  $('#face-back').dataset.size = sizeOf(back);
+  $('#study-mode').textContent = 'Pirma: ' + (state.reverse ? 'atsakymas' : 'klausimas');
+  $('#study-status').replaceChildren(
+    h('b', {}, `Raundas ${s.round}`),
+    `, liko ${s.queue.length}, išmokta ${s.known} iš ${s.total}`);
+  $('#progress-fill').style.width = (s.total ? (s.known / s.total) * 100 : 0) + '%';
+  $('#peek').style.visibility = s.queue.length > 1 ? 'visible' : 'hidden';
+  $('#btn-undo').disabled = !s.history.length;
+  busy = false;
+  resetCard();
+  fitAll(); // po visų kitų elementų, kad kortelės aukštis jau būtų galutinis
+  wrap.animate([{ transform: 'scale(.96)' }, { transform: 'none' }], { duration: 160, easing: 'ease-out' });
+}
+
+function flip() {
+  if (busy) return;
+  card.classList.toggle('flipped');
+}
+
+function answer(ok) {
+  const s = state.session;
+  if (!s || !s.queue.length) { busy = false; return; }
+  const id = s.queue.shift();
+  const deck = deckById(s.deckId);
+  const card = deck && deck.cards.find(x => x.id === id);
+  if (ok) { s.known++; s.knownIds.push(id); }
+  else {
+    s.missed.push(id);
+    s.misses[id] = (s.misses[id] || 0) + 1;
+    if (card) card.miss = (card.miss || 0) + 1;
+  }
+  if (card) card.known = ok;
+  s.history.push({ id, ok });
+  if (deck) {
+    const st = statsOf(deck);
+    st.lastStudied = Date.now();
+    if (!s.queue.length && !s.missed.length) st.completed = (st.completed || 0) + 1;
+  }
+  save();
+  if (!s.queue.length) { busy = false; go('summary'); return; }
+  renderStudyCard();
+}
+
+function fling(dir) {
+  if (busy || !state.session) return;
+  busy = true;
+  (dir > 0 ? stampYes : stampNo).style.opacity = 1;
+  wrap.style.transition = 'transform .28s ease-in, opacity .28s ease-in';
+  wrap.style.transform = `translateX(${dir * Math.max(window.innerWidth, 500)}px) rotate(${dir * 24}deg)`;
+  wrap.style.opacity = '0';
+  setTimeout(() => answer(dir > 0), 260);
+}
+
+function undo() {
+  const s = state.session;
+  if (!s || busy) return;
+  const last = s.history.pop();
+  if (!last) return;
+  if (last.ok) { s.known--; s.knownIds = s.knownIds.filter(i => i !== last.id); }
+  else {
+    s.missed = s.missed.filter(i => i !== last.id);
+    s.misses[last.id] = Math.max(0, (s.misses[last.id] || 1) - 1);
+    const dk = deckById(s.deckId), cd = dk && dk.cards.find(x => x.id === last.id);
+    if (cd && cd.miss > 0) cd.miss--;
+  }
+  s.queue.unshift(last.id);
+  save();
+  renderStudyCard();
+}
+
+/* Braukimas ir bakstelėjimas */
+let drag = null;
+wrap.addEventListener('pointerdown', e => {
+  if (busy) return;
+  drag = { x: e.clientX, y: e.clientY, dx: 0, dy: 0, moved: false };
+  wrap.setPointerCapture(e.pointerId);
+  wrap.style.transition = 'none';
+});
+wrap.addEventListener('pointermove', e => {
+  if (!drag) return;
+  drag.dx = e.clientX - drag.x;
+  drag.dy = e.clientY - drag.y;
+  if (Math.abs(drag.dx) > 6 || Math.abs(drag.dy) > 6) drag.moved = true;
+  if (!drag.moved) return;
+  wrap.style.transform = `translate(${drag.dx}px, ${drag.dy * 0.2}px) rotate(${drag.dx / 25}deg)`;
+  const p = Math.min(Math.abs(drag.dx) / 110, 1);
+  stampYes.style.opacity = drag.dx > 0 ? p : 0;
+  stampNo.style.opacity = drag.dx < 0 ? p : 0;
+});
+function snapBack() {
+  wrap.style.transition = '';
+  wrap.style.transform = '';
+  stampYes.style.opacity = 0;
+  stampNo.style.opacity = 0;
+}
+wrap.addEventListener('pointerup', () => {
+  if (!drag) return;
+  const d = drag;
+  drag = null;
+  wrap.style.transition = '';
+  if (!d.moved) { flip(); return; }
+  const threshold = Math.min(110, window.innerWidth * 0.25);
+  if (Math.abs(d.dx) > threshold) fling(d.dx > 0 ? 1 : -1);
+  else snapBack();
+});
+wrap.addEventListener('pointercancel', () => { drag = null; snapBack(); });
+
+$('#btn-yes').addEventListener('click', () => fling(1));
+$('#btn-no').addEventListener('click', () => fling(-1));
+$('#btn-undo').addEventListener('click', undo);
+$('#study-exit').addEventListener('click', () => { save(); backToDeck(state.session && state.session.deckId); });
+$('#study-mode').addEventListener('click', () => { state.reverse = !state.reverse; save(); renderStudyCard(); });
+
+document.addEventListener('keydown', e => {
+  if (current !== 'study' || e.target.matches('input,textarea')) return;
+  if (e.key === 'ArrowLeft') { e.preventDefault(); fling(-1); }
+  else if (e.key === 'ArrowRight') { e.preventDefault(); fling(1); }
+  else if (e.key === 'ArrowDown') { e.preventDefault(); undo(); }
+  else if (e.key === 'ArrowUp' ||
+          ((e.key === ' ' || e.key === 'Enter') && !e.target.matches('button'))) { e.preventDefault(); flip(); }
+});
+
+/* ---------- Raundo santrauka ---------- */
+function continueMissed() {
+  const s = state.session;
+  if (!s || !s.missed.length) return;
+  s.round++;
+  s.queue = shuffle(s.missed);
+  s.missed = [];
+  s.history = [];
+  summaryTab = 'missed';
+  save();
+  go('study');
+}
+
+function backToDeck(id) {
+  if (id && deckById(id)) go('deck', id); else go('home');
+}
+
+function renderSummary() {
+  cleanSession();
+  const s = state.session;
+  if (!s) return go('home');
+  const d = deckById(s.deckId);
+  const byId = id => d.cards.find(c => c.id === id);
+  const missed = s.missed.map(byId).filter(Boolean);
+  const known = s.knownIds.map(byId).filter(Boolean);
+  const roundYes = s.history.filter(x => x.ok).length;
+  const roundNo = s.history.length - roundYes;
+  const allDone = missed.length === 0;
+  if (allDone && summaryTab === 'missed') summaryTab = 'known';
+  if (!allDone && !known.length) summaryTab = 'missed';
+
+  const root = $('#view-summary');
+  root.replaceChildren();
+  root.append(
+    h('div', { class: 'bar' }, h('button', { type: 'button', class: 'btn ghost', onclick: () => backToDeck(s.deckId) }, '‹ Kaladė')),
+    h('h1', {}, allDone ? 'Viską išmokai!' : `Raundas ${s.round} baigtas`),
+    h('p', { class: 'sum-stats' },
+      `Šiame raunde žinojai ${roundYes}, nežinojai ${roundNo}. Iš viso išmokta ${known.length} iš ${s.total}.`),
+    h('div', { class: 'progress', 'aria-hidden': 'true' },
+      h('span', { style: `width:${s.total ? (known.length / s.total) * 100 : 0}%;display:block;height:100%;background:var(--yes)` })),
+    h('div', { class: 'sum-actions' },
+      allDone ? null : h('button', { type: 'button', class: 'btn primary', onclick: continueMissed },
+        `Mokytis tik neišmoktas (${missed.length})`),
+      h('button', { type: 'button', class: allDone ? 'btn primary' : 'btn', onclick: () => begin(s.deckId) },
+        `Mokytis viską iš naujo (${d.cards.length})`),
+      h('button', { type: 'button', class: 'btn ghost', onclick: () => backToDeck(s.deckId) }, 'Baigti')));
+
+  const tab = (key, cls, label, n) => h('button', {
+    type: 'button', role: 'tab', class: 'tab ' + cls, 'aria-selected': String(summaryTab === key),
+    onclick: () => { summaryTab = key; renderSummary(); }
+  }, `${label} (${n})`);
+  root.append(h('div', { class: 'tabs', role: 'tablist' },
+    tab('missed', 'no', 'Neišmokta', missed.length),
+    tab('known', 'yes', 'Išmokta', known.length)));
+
+  const list = summaryTab === 'missed' ? missed : known;
+  const ul = h('ul', { class: 'sumlist', role: 'tabpanel' });
+  if (!list.length) {
+    ul.append(h('li', { class: 'empty' }, summaryTab === 'missed' ? 'Neišmoktų kortelių nėra.' : 'Kol kas nėra išmoktų kortelių.'));
+  } else {
+    for (const c of list) {
+      const n = s.misses[c.id] || 0;
+      ul.append(h('li', {},
+        h('div', { class: 'ctext' }, cardTexts(c)),
+        n ? h('span', { class: 'badge' }, `klaidų: ${n}`) : null));
+    }
+  }
+  root.append(ul);
+}
+
+/* ---------- Testas (A, B, C, D) ---------- */
+let test = null;
+const LETTERS = ['A', 'B', 'C', 'D'];
+
+function startTest(deckId, ids) {
+  const d = deckById(deckId);
+  if (!d) return;
+  if (d.cards.length < 2) { toast('Testui reikia bent 2 kortelių.'); return; }
+  const list = shuffle(ids || d.cards.map(c => c.id)).filter(id => d.cards.some(c => c.id === id));
+  test = { deckId, ids: list, i: 0, correct: 0, wrong: [], options: null, picked: null, full: !ids, recorded: false };
+  go('test');
+}
+
+// Teisingas atsakymas + iki 3 kitų kortelių atsakymų (tekstas ir/arba nuotrauka)
+function makeOptions(d, c) {
+  const key = x => (x.a || '').trim().toLowerCase() + '|' + (x.ai ? x.ai.length + x.ai.slice(-40) : '');
+  const seen = new Set([key(c)]);
+  const others = [];
+  for (const o of shuffle(d.cards)) {
+    if (o.id === c.id) continue;
+    const k = key(o);
+    if (seen.has(k)) continue;
+    seen.add(k);
+    others.push({ text: o.a, img: o.ai || null, correct: false });
+    if (others.length === 3) break;
+  }
+  return shuffle([{ text: c.a, img: c.ai || null, correct: true }, ...others]);
+}
+
+function renderTest() {
+  const root = $('#view-test');
+  const t = test;
+  const d = t && deckById(t.deckId);
+  if (!d) return go('home');
+  // praleidžiam ištrintas kortelės ar tas, kurioms nėra kitų variantų
+  while (t.i < t.ids.length) {
+    const c = d.cards.find(x => x.id === t.ids[t.i]);
+    if (!c) { t.ids.splice(t.i, 1); continue; }
+    if (!t.options) { t.options = makeOptions(d, c); t.picked = null; }
+    if (t.options.length < 2) { t.options = null; t.ids.splice(t.i, 1); continue; }
+    break;
+  }
+  if (t.i >= t.ids.length) return renderTestResult(root, d);
+
+  const c = d.cards.find(x => x.id === t.ids[t.i]);
+  const total = t.ids.length;
+  const answered = t.picked !== null;
+  const last = t.i === total - 1;
+  const gotIt = answered && t.options[t.picked].correct;
+
+  root.replaceChildren(...[
+    h('div', { class: 'bar' },
+      h('button', { type: 'button', class: 'btn ghost', onclick: () => { const id = test && test.deckId; test = null; backToDeck(id); } }, '‹ Išeiti'),
+      h('span', { class: 'meta' }, `Teisingai: ${t.correct}`)),
+    h('div', { class: 'progress', 'aria-hidden': 'true' },
+      h('span', { style: `display:block;height:100%;width:${(t.i / total) * 100}%;background:var(--accent);transition:width .3s` })),
+    h('div', { class: 'qcard' },
+      h('div', { class: 'qtag' }, `Klausimas ${t.i + 1} iš ${total}`),
+      h('div', { class: 'qrule' }),
+      imgEl(c.qi, 'qimg'),
+      c.q ? h('div', { class: 'qtext', 'data-size': sizeOf(c.q) }, c.q) : null),
+    h('div', { class: 'opts', role: 'group', 'aria-label': 'Atsakymo variantai' },
+      t.options.map((o, i) => {
+        let cls = 'opt', mark = '';
+        if (answered) {
+          if (o.correct) { cls += ' correct'; mark = '✓'; }
+          else if (i === t.picked) { cls += ' wrong'; mark = '✕'; }
+          else cls += ' dim';
+        }
+        return h('button', { type: 'button', class: cls, 'aria-disabled': String(answered), onclick: () => pick(i) },
+          h('span', { class: 'let' }, LETTERS[i]),
+          h('span', { class: 'ot' }, o.text || null, imgEl(o.img, 'oimg')),
+          h('span', { class: 'mark' }, mark));
+      })),
+    answered ? h('div', { class: 'fb ' + (gotIt ? 'ok' : 'bad'), role: 'status' }, gotIt ? 'Teisingai!' : 'Neteisingai. Teisingas atsakymas pažymėtas žaliai.') : null,
+    answered ? h('button', { type: 'button', id: 'test-next', class: 'btn primary', onclick: nextQuestion }, last ? 'Rodyti rezultatą' : 'Toliau') : null
+  ].filter(Boolean));
+
+  if (answered) $('#test-next').scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+}
+
+function pick(i) {
+  const t = test;
+  if (!t || t.picked !== null) return;
+  const d = deckById(t.deckId);
+  const c = d && d.cards.find(x => x.id === t.ids[t.i]);
+  if (!c) return;
+  t.picked = i;
+  c.known = !!t.options[i].correct;
+  if (t.options[i].correct) t.correct++;
+  else {
+    t.wrong.push({ id: c.id, picked: t.options[i].text, pickedImg: t.options[i].img });
+    c.miss = (c.miss || 0) + 1;
+    save();
+  }
+  renderTest();
+}
+
+function nextQuestion() {
+  const t = test;
+  if (!t || t.picked === null) return;
+  t.i++;
+  t.options = null;
+  t.picked = null;
+  renderTest();
+  window.scrollTo(0, 0);
+}
+
+function renderTestResult(root, d) {
+  const t = test;
+  const total = t.ids.length;
+  const pct = total ? Math.round((t.correct / total) * 100) : 0;
+  if (!t.recorded && t.full && total) {
+    t.recorded = true;
+    const st = statsOf(d);
+    st.tests = (st.tests || 0) + 1;
+    st.lastTest = { c: t.correct, t: total, ts: Date.now() };
+    st.best = Math.max(st.best || 0, pct);
+    save();
+  }
+  const wrongIds = t.wrong.map(w => w.id);
+  root.replaceChildren(
+    h('div', { class: 'bar' }, h('button', { type: 'button', class: 'btn ghost', onclick: () => { test = null; backToDeck(t.deckId); } }, '‹ Kaladė')),
+    h('h1', {}, wrongIds.length ? 'Testas baigtas' : 'Nepriekaištingai!'),
+    h('p', { class: 'sum-stats' }, `Teisingai atsakyta ${t.correct} iš ${total} (${pct}%).`),
+    h('div', { class: 'progress', 'aria-hidden': 'true' },
+      h('span', { style: `display:block;height:100%;width:${pct}%;background:var(--yes)` })),
+    h('div', { class: 'sum-actions' },
+      wrongIds.length ? h('button', { type: 'button', class: 'btn primary', onclick: () => startTest(t.deckId, wrongIds) }, `Kartoti klaidas (${wrongIds.length})`) : null,
+      h('button', { type: 'button', class: wrongIds.length ? 'btn' : 'btn primary', onclick: () => startTest(t.deckId) }, 'Testas iš naujo (visos kortelės)'),
+      h('button', { type: 'button', class: 'btn', onclick: () => begin(t.deckId) }, 'Mokytis kortelėmis'),
+      h('button', { type: 'button', class: 'btn ghost', onclick: () => { test = null; backToDeck(t.deckId); } }, 'Baigti')));
+  if (wrongIds.length) {
+    const ul = h('ul', { class: 'sumlist' });
+    for (const w of t.wrong) {
+      const c = d.cards.find(x => x.id === w.id);
+      if (!c) continue;
+      ul.append(h('li', {},
+        h('div', { class: 'ctext' },
+          c.q ? h('div', { class: 'cq' }, c.q) : null,
+          imgEl(c.qi),
+          h('div', { class: 'wrong-a' }, `Tu pasirinkai: ${w.picked || ''}`, imgEl(w.pickedImg)),
+          h('div', { class: 'right-a' }, `Teisingai: ${c.a || ''}`, imgEl(c.ai)))));
+    }
+    root.append(h('h2', {}, `Klaidos (${wrongIds.length})`), ul);
+  }
+}
+
+document.addEventListener('keydown', e => {
+  const t = test;
+  if (current !== 'test' || !t || t.i >= t.ids.length || e.target.matches('input,textarea')) return;
+  if (t.picked === null) {
+    const k = e.key.toLowerCase();
+    let i = k.length === 1 ? 'abcd'.indexOf(k) : -1;
+    if (i < 0 && /^[1-4]$/.test(k)) i = Number(k) - 1;
+    if (i >= 0 && i < t.options.length) { e.preventDefault(); pick(i); }
+  } else if (e.key === 'ArrowRight' || ((e.key === 'Enter' || e.key === ' ') && !e.target.matches('button'))) {
+    e.preventDefault();
+    nextQuestion();
+  }
+});
+
+/* ---------- Rašymo praktika ---------- */
+// Švelnesnis tekstas palyginimui: be tarpų pertekliaus ir skyrybos, bet raides paliekam kaip parašyta
+function lightNorm(s) {
+  return (s || '').trim().replace(/\s+/g, ' ').replace(/[.,!?;:()'"„“”‚‘’-]/g, '');
+}
+
+// Levenshteino atstumas su atsekimu, kad matytume, kurios raidės skiriasi
+function diffStrings(a, b) {
+  const m = a.length, n = b.length;
+  const dp = Array.from({ length: m + 1 }, () => new Array(n + 1).fill(0));
+  for (let i = 0; i <= m; i++) dp[i][0] = i;
+  for (let j = 0; j <= n; j++) dp[0][j] = j;
+  for (let i = 1; i <= m; i++) {
+    for (let j = 1; j <= n; j++) {
+      dp[i][j] = a[i - 1] === b[j - 1] ? dp[i - 1][j - 1] : 1 + Math.min(dp[i - 1][j], dp[i][j - 1], dp[i - 1][j - 1]);
+    }
+  }
+  let i = m, j = n;
+  const aTok = [], bTok = [];
+  while (i > 0 || j > 0) {
+    if (i > 0 && j > 0 && a[i - 1] === b[j - 1] && dp[i][j] === dp[i - 1][j - 1]) {
+      aTok.push({ ch: a[i - 1], same: true }); bTok.push({ ch: b[j - 1], same: true }); i--; j--;
+    } else if (i > 0 && j > 0 && dp[i][j] === dp[i - 1][j - 1] + 1) {
+      aTok.push({ ch: a[i - 1], same: false }); bTok.push({ ch: b[j - 1], same: false }); i--; j--;
+    } else if (i > 0 && dp[i][j] === dp[i - 1][j] + 1) {
+      aTok.push({ ch: a[i - 1], same: false }); i--;
+    } else {
+      bTok.push({ ch: b[j - 1], same: false }); j--;
+    }
+  }
+  aTok.reverse(); bTok.reverse();
+  return { distance: dp[m][n], aTok, bTok };
+}
+
+// Sugrupuoja gretimus tos pačios rūšies simbolius, kad paryškinimas būtų vientisas
+function diffRuns(tokens) {
+  const runs = [];
+  for (const t of tokens) {
+    const last = runs[runs.length - 1];
+    if (last && last.same === t.same) last.text += t.ch;
+    else runs.push({ same: t.same, text: t.ch });
+  }
+  return runs;
+}
+function diffNodes(tokens, markClass) {
+  return diffRuns(tokens).map(r => r.same ? r.text : h('mark', { class: markClass }, r.text));
+}
+
+let writeS = null;
+
+function startWrite(deckId, ids) {
+  const d = deckById(deckId);
+  if (!d) return;
+  const pool = (ids ? d.cards.filter(c => ids.includes(c.id)) : d.cards).filter(c => (c.a || '').trim());
+  if (!pool.length) { toast('Šiam būdui reikia bent vienos kortelės su tekstiniu atsakymu.'); return; }
+  writeS = { deckId, ids: shuffle(pool.map(c => c.id)), i: 0, correct: 0, wrong: [], checked: false, wasCorrect: false, close: false, diff: null, typedVal: '', full: !ids, recorded: false };
+  go('write');
+}
+
+// Švelnus palyginimas: nesvarbu didžiosios/mažosios raidės, tarpai ir skyrybos ženklai
+function normAnswer(s) {
+  return (s || '').trim().toLowerCase().replace(/\s+/g, ' ').replace(/[.,!?;:()'"„“”‚‘’-]/g, '');
+}
+
+function renderWrite() {
+  const root = $('#view-write');
+  const w = writeS;
+  const d = w && deckById(w.deckId);
+  if (!d) return go('home');
+  while (w.i < w.ids.length && !d.cards.some(c => c.id === w.ids[w.i])) w.ids.splice(w.i, 1);
+  if (w.i >= w.ids.length) return renderWriteResult(root, d);
+
+  const c = d.cards.find(x => x.id === w.ids[w.i]);
+  const total = w.ids.length;
+  const checked = w.checked;
+  const last = w.i === total - 1;
+
+  root.replaceChildren(...[
+    h('div', { class: 'bar' },
+      h('button', { type: 'button', class: 'btn ghost', onclick: () => { const id = writeS && writeS.deckId; writeS = null; backToDeck(id); } }, '‹ Išeiti'),
+      h('span', { class: 'meta' }, `Teisingai: ${w.correct}`)),
+    h('div', { class: 'progress', 'aria-hidden': 'true' },
+      h('span', { style: `display:block;height:100%;width:${(w.i / total) * 100}%;background:var(--accent);transition:width .3s` })),
+    h('div', { class: 'qcard' },
+      h('div', { class: 'qtag' }, `Klausimas ${w.i + 1} iš ${total}`),
+      h('div', { class: 'qrule' }),
+      imgEl(c.qi, 'qimg'),
+      c.q ? h('div', { class: 'qtext', 'data-size': sizeOf(c.q) }, c.q) : null),
+    h('input', {
+      type: 'text', id: 'w-input', class: 'w-input' + (checked ? (w.wasCorrect ? ' correct' : (w.close ? ' close' : ' wrong')) : ''),
+      placeholder: 'Rašyk atsakymą...', autocomplete: 'off', autocapitalize: 'off', spellcheck: 'false',
+      readonly: checked, value: w.typedVal
+    }),
+    checked && w.close && w.diff ? h('div', { class: 'w-correct close' },
+      h('div', { class: 'diff-label' }, 'Beveik teisingai — patikrink rašybą'),
+      h('div', { class: 'diff-row' }, h('span', { class: 'diff-tag' }, 'Parašei'), diffNodes(w.diff.aTok, 'diff-del')),
+      h('div', { class: 'diff-row' }, h('span', { class: 'diff-tag' }, 'Reikia'), diffNodes(w.diff.bTok, 'diff-add')),
+      imgEl(c.ai)) : null,
+    checked && !(w.close && w.diff) ? h('div', { class: 'w-correct' }, h('span', { class: 'meta' }, w.wasCorrect ? 'Teisinga: ' : 'Teisingas atsakymas: '), h('b', {}, c.a || ''), imgEl(c.ai)) : null,
+    h('div', { class: 'w-actions' },
+      !checked ? h('button', { type: 'button', class: 'btn primary', id: 'w-check', onclick: checkWrite }, 'Tikrinti') : null,
+      !checked ? h('button', { type: 'button', class: 'btn ghost', onclick: revealWrite }, 'Nežinau') : null,
+      checked && !w.wasCorrect ? h('button', { type: 'button', class: 'btn' + (w.close ? ' warn' : ''), onclick: markWriteCorrect }, 'Užskaityti kaip teisingą') : null,
+      checked ? h('button', { type: 'button', class: 'btn primary', onclick: nextWrite }, last ? 'Rodyti rezultatą' : 'Toliau') : null)
+  ].filter(Boolean));
+
+  if (!checked) $('#w-input').focus();
+}
+
+function checkWrite() {
+  const w = writeS;
+  if (!w || w.checked) return;
+  const d = deckById(w.deckId);
+  const c = d && d.cards.find(x => x.id === w.ids[w.i]);
+  if (!c) return;
+  const val = $('#w-input').value;
+  const ok = val.trim() !== '' && normAnswer(val) === normAnswer(c.a);
+  w.checked = true;
+  w.wasCorrect = ok;
+  w.typedVal = val;
+  w.close = false;
+  w.diff = null;
+  c.known = ok;
+  if (ok) w.correct++;
+  else {
+    w.wrong.push({ id: c.id, typed: val });
+    c.miss = (c.miss || 0) + 1;
+    // Ar tik smulki rašybos klaida? Jei taip, parodom, ką reikia pataisyti
+    const typedN = lightNorm(val), correctN = lightNorm(c.a);
+    if (typedN && correctN) {
+      const threshold = correctN.length <= 4 ? 1 : correctN.length <= 9 ? 2 : Math.min(4, Math.ceil(correctN.length * 0.2));
+      const d = diffStrings(typedN, correctN);
+      if (d.distance > 0 && d.distance <= threshold) { w.close = true; w.diff = d; }
+    }
+    save();
+  }
+  renderWrite();
+}
+
+function revealWrite() {
+  const w = writeS;
+  if (!w || w.checked) return;
+  const d = deckById(w.deckId);
+  const c = d && d.cards.find(x => x.id === w.ids[w.i]);
+  if (!c) return;
+  w.typedVal = $('#w-input').value;
+  w.checked = true;
+  w.wasCorrect = false;
+  w.close = false;
+  w.diff = null;
+  w.wrong.push({ id: c.id, typed: w.typedVal });
+  c.miss = (c.miss || 0) + 1;
+  save();
+  renderWrite();
+}
+
+function markWriteCorrect() {
+  const w = writeS;
+  if (!w || !w.checked || w.wasCorrect) return;
+  w.wasCorrect = true;
+  w.correct++;
+  w.wrong.pop();
+  const d = deckById(w.deckId);
+  const c = d && d.cards.find(x => x.id === w.ids[w.i]);
+  if (c && c.miss > 0) c.miss--;
+  save();
+  renderWrite();
+}
+
+function nextWrite() {
+  const w = writeS;
+  if (!w || !w.checked) return;
+  w.i++;
+  w.checked = false;
+  w.wasCorrect = false;
+  w.close = false;
+  w.diff = null;
+  w.typedVal = '';
+  renderWrite();
+  window.scrollTo(0, 0);
+}
+
+function renderWriteResult(root, d) {
+  const w = writeS;
+  const total = w.ids.length;
+  const pct = total ? Math.round((w.correct / total) * 100) : 0;
+  if (!w.recorded && w.full && total) {
+    w.recorded = true;
+    const st = statsOf(d);
+    st.lastWrite = { c: w.correct, t: total, ts: Date.now() };
+    save();
+  }
+  const wrongIds = w.wrong.map(x => x.id);
+  root.replaceChildren(
+    h('div', { class: 'bar' }, h('button', { type: 'button', class: 'btn ghost', onclick: () => { writeS = null; backToDeck(w.deckId); } }, '‹ Kaladė')),
+    h('h1', {}, wrongIds.length ? 'Praktika baigta' : 'Nepriekaištingai!'),
+    h('p', { class: 'sum-stats' }, `Teisingai atsakyta ${w.correct} iš ${total} (${pct}%).`),
+    h('div', { class: 'progress', 'aria-hidden': 'true' },
+      h('span', { style: `display:block;height:100%;width:${pct}%;background:var(--yes)` })),
+    h('div', { class: 'sum-actions' },
+      wrongIds.length ? h('button', { type: 'button', class: 'btn primary', onclick: () => startWrite(w.deckId, wrongIds) }, `Kartoti klaidas (${wrongIds.length})`) : null,
+      h('button', { type: 'button', class: wrongIds.length ? 'btn' : 'btn primary', onclick: () => startWrite(w.deckId) }, 'Iš naujo (visos kortelės)'),
+      h('button', { type: 'button', class: 'btn ghost', onclick: () => { writeS = null; backToDeck(w.deckId); } }, 'Baigti')));
+  if (wrongIds.length) {
+    const ul = h('ul', { class: 'sumlist' });
+    for (const x of w.wrong) {
+      const c = d.cards.find(y => y.id === x.id);
+      if (!c) continue;
+      ul.append(h('li', {},
+        h('div', { class: 'ctext' },
+          c.q ? h('div', { class: 'cq' }, c.q) : null,
+          imgEl(c.qi),
+          h('div', { class: 'wrong-a' }, `Tu parašei: ${x.typed ? x.typed : '(nieko)'}`),
+          h('div', { class: 'right-a' }, `Teisingai: ${c.a || ''}`, imgEl(c.ai)))));
+    }
+    root.append(h('h2', {}, `Klaidos (${wrongIds.length})`), ul);
+  }
+}
+
+document.addEventListener('keydown', e => {
+  if (current !== 'write' || !writeS) return;
+  if (e.key === 'Enter') {
+    e.preventDefault();
+    if (!writeS.checked) checkWrite(); else nextWrite();
+  }
+});
+
+/* ---------- Greitas suporavimas ---------- */
+let match = null;
+let matchBusy = false;
+
+function clearMatchTimer() {
+  if (match && match.timerId) { clearInterval(match.timerId); match.timerId = null; }
+}
+
+function fmtTime(ms) {
+  const total = Math.max(0, ms) / 1000;
+  const m = Math.floor(total / 60);
+  const s = (total - m * 60).toFixed(1);
+  return m > 0 ? `${m}:${s.padStart(4, '0')}` : `${s}s`;
+}
+
+function startMatch(deckId, ids) {
+  const d = deckById(deckId);
+  if (!d) return;
+  const pool = (ids ? d.cards.filter(c => ids.includes(c.id)) : d.cards).filter(c => (c.q || c.qi) && (c.a || c.ai));
+  if (pool.length < 2) { toast('Suporavimui reikia bent 2 kortelių.'); return; }
+  clearMatchTimer();
+  const pairs = Math.min(8, pool.length);
+  const chosen = shuffle(pool).slice(0, pairs);
+  const tiles = [];
+  chosen.forEach(c => {
+    tiles.push({ key: uid(), cardId: c.id, side: 'q', text: c.q, img: c.qi });
+    tiles.push({ key: uid(), cardId: c.id, side: 'a', text: c.a, img: c.ai });
+  });
+  match = { deckId, pairs, tiles: shuffle(tiles), sel: [], matched: new Set(), flashBad: null, mistakes: 0, startTs: Date.now(), timerId: null, done: false, ms: 0, full: !ids, isRecord: false };
+  matchBusy = false;
+  go('match');
+}
+
+function renderMatch() {
+  const root = $('#view-match');
+  const m = match;
+  if (!m) return go('home');
+  const d = deckById(m.deckId);
+  if (!d) return go('home');
+  if (m.done) return renderMatchResult(root, d);
+
+  if (!m.timerId) {
+    m.timerId = setInterval(() => {
+      if (!match || match.done) return;
+      const el = $('#m-timer');
+      if (el) el.textContent = fmtTime(Date.now() - match.startTs);
+    }, 200);
+  }
+
+  const exit = () => { clearMatchTimer(); const id = match && match.deckId; match = null; backToDeck(id); };
+  const grid = h('div', { class: 'mgrid', role: 'group', 'aria-label': 'Suporavimo lentelė' },
+    m.tiles.map((tile, i) => {
+      const isMatched = m.matched.has(tile.key);
+      const isSel = m.sel.includes(i);
+      const isBad = m.flashBad && m.flashBad.includes(i);
+      let cls = 'mtile';
+      if (isMatched) cls += ' ok';
+      else if (isBad) cls += ' bad';
+      else if (isSel) cls += ' sel';
+      return h('button', { type: 'button', class: cls, 'aria-disabled': String(isMatched), 'data-card': tile.cardId, 'data-side': tile.side, onclick: () => tapTile(i) },
+        tile.img ? h('img', { src: tile.img, alt: '' }) : null,
+        tile.text ? h('span', { class: 'mt-text' }, tile.text) : null);
+    }));
+
+  root.replaceChildren(
+    h('div', { class: 'bar' },
+      h('button', { type: 'button', class: 'btn ghost', onclick: exit }, '‹ Išeiti'),
+      h('span', { class: 'meta' }, `Klaidos: ${m.mistakes}`)),
+    h('div', { class: 'm-timer-wrap' }, h('span', { id: 'm-timer', class: 'm-timer-big' }, fmtTime(Date.now() - m.startTs))),
+    h('p', { class: 'hint' }, 'Bakstelėk klausimą ir jo atsakymą, kad juos suporuotum.'),
+    grid);
+}
+
+function tapTile(i) {
+  const m = match;
+  if (!m || m.done || matchBusy) return;
+  const tile = m.tiles[i];
+  if (m.matched.has(tile.key)) return;
+  if (m.sel.includes(i)) { m.sel = []; renderMatch(); return; }
+  m.sel.push(i);
+  if (m.sel.length < 2) { renderMatch(); return; }
+  const [ia, ib] = m.sel;
+  const ta = m.tiles[ia], tb = m.tiles[ib];
+  if (ta.cardId === tb.cardId && ta.side !== tb.side) {
+    m.matched.add(ta.key);
+    m.matched.add(tb.key);
+    m.sel = [];
+    renderMatch();
+    if (m.matched.size === m.tiles.length) finishMatch();
+  } else {
+    m.mistakes++;
+    m.flashBad = [ia, ib];
+    matchBusy = true;
+    renderMatch();
+    setTimeout(() => {
+      if (match !== m) return;
+      m.sel = [];
+      m.flashBad = null;
+      matchBusy = false;
+      renderMatch();
+    }, 550);
+  }
+}
+
+function finishMatch() {
+  const m = match;
+  if (!m) return;
+  clearMatchTimer();
+  m.done = true;
+  m.ms = Date.now() - m.startTs;
+  const d = deckById(m.deckId);
+  if (d && m.full) {
+    const st = statsOf(d);
+    const prev = st.bestMatch;
+    const isRecord = !prev || prev.pairs !== m.pairs || m.ms < prev.ms;
+    if (isRecord) st.bestMatch = { ms: m.ms, pairs: m.pairs, ts: Date.now() };
+    m.isRecord = isRecord;
+    save();
+  }
+  renderMatch();
+}
+
+function renderMatchResult(root, d) {
+  const m = match;
+  root.replaceChildren(
+    h('div', { class: 'bar' }, h('button', { type: 'button', class: 'btn ghost', onclick: () => { match = null; backToDeck(m.deckId); } }, '‹ Kaladė')),
+    h('h1', {}, m.isRecord ? 'Naujas rekordas!' : 'Suporuota!'),
+    h('p', { class: 'sum-stats' }, `Laikas ${fmtTime(m.ms)}, klaidų ${m.mistakes}, porų ${m.pairs}.`),
+    h('div', { class: 'sum-actions' },
+      h('button', { type: 'button', class: 'btn primary', onclick: () => startMatch(m.deckId) }, 'Žaisti dar kartą'),
+      h('button', { type: 'button', class: 'btn ghost', onclick: () => { match = null; backToDeck(m.deckId); } }, 'Baigti')));
+}
+
+/* ---------- Tiesa ar melas ---------- */
+let tf = null;
+
+function startTF(deckId, ids) {
+  const d = deckById(deckId);
+  if (!d) return;
+  const pool = (ids ? d.cards.filter(c => ids.includes(c.id)) : d.cards).filter(c => (c.q || c.qi) && (c.a || c.ai));
+  if (pool.length < 2) { toast('Šiam būdui reikia bent 2 kortelių.'); return; }
+  const order = shuffle(pool);
+  const answerKey = c => (c.a || '').trim().toLowerCase() + '|' + (c.ai ? c.ai.length : 0);
+  const props = order.map(c => {
+    const isTrue = Math.random() < 0.5;
+    if (isTrue) return { id: c.id, isTrue: true, text: c.a, img: c.ai };
+    const others = d.cards.filter(o => o.id !== c.id && answerKey(o) !== answerKey(c));
+    if (!others.length) return { id: c.id, isTrue: true, text: c.a, img: c.ai };
+    const o = others[Math.floor(Math.random() * others.length)];
+    return { id: c.id, isTrue: false, text: o.a, img: o.ai };
+  });
+  tf = { deckId, ids: order.map(c => c.id), props, i: 0, correct: 0, wrong: [], checked: false, picked: null, full: !ids, recorded: false };
+  go('tf');
+}
+
+function renderTF() {
+  const root = $('#view-tf');
+  const t = tf;
+  const d = t && deckById(t.deckId);
+  if (!d) return go('home');
+  while (t.i < t.ids.length && !d.cards.some(c => c.id === t.ids[t.i])) { t.ids.splice(t.i, 1); t.props.splice(t.i, 1); }
+  if (t.i >= t.ids.length) return renderTFResult(root, d);
+
+  const c = d.cards.find(x => x.id === t.ids[t.i]);
+  const prop = t.props[t.i];
+  const total = t.ids.length;
+  const checked = t.checked;
+  const last = t.i === total - 1;
+
+  root.replaceChildren(...[
+    h('div', { class: 'bar' },
+      h('button', { type: 'button', class: 'btn ghost', onclick: () => { const id = tf && tf.deckId; tf = null; backToDeck(id); } }, '‹ Išeiti'),
+      h('span', { class: 'meta' }, `Teisingai: ${t.correct}`)),
+    h('div', { class: 'progress', 'aria-hidden': 'true' },
+      h('span', { style: `display:block;height:100%;width:${(t.i / total) * 100}%;background:var(--accent);transition:width .3s` })),
+    h('div', { class: 'qcard' },
+      h('div', { class: 'qtag' }, `Teiginys ${t.i + 1} iš ${total}`),
+      h('div', { class: 'qrule' }),
+      imgEl(c.qi, 'qimg'),
+      c.q ? h('div', { class: 'qtext', 'data-size': sizeOf(c.q) }, c.q) : null,
+      h('div', { class: 'tf-prop' }, imgEl(prop.img, 'tf-pimg'), prop.text ? h('div', { class: 'tf-ptext' }, prop.text) : null)),
+    !checked ? h('div', { class: 'tf-actions' },
+      h('button', { type: 'button', class: 'btn', onclick: () => pickTF(true) }, 'Teisybė'),
+      h('button', { type: 'button', class: 'btn', onclick: () => pickTF(false) }, 'Melas')) : null,
+    checked ? h('div', { class: 'tf-actions' },
+      h('button', { type: 'button', class: 'btn' + (prop.isTrue ? ' correct' : (t.picked === true ? ' wrong' : ' dim')), disabled: true }, 'Teisybė'),
+      h('button', { type: 'button', class: 'btn' + (!prop.isTrue ? ' correct' : (t.picked === false ? ' wrong' : ' dim')), disabled: true }, 'Melas')) : null,
+    checked ? h('div', { class: 'tf-reveal' + (t.picked === prop.isTrue ? ' ok' : ' bad') },
+      h('span', {}, t.picked === prop.isTrue ? 'Teisingai! ' : 'Neteisingai. '),
+      h('b', {}, prop.isTrue ? 'Tai buvo teisybė.' : `Teisingas atsakymas: ${c.a || ''}`),
+      !prop.isTrue ? imgEl(c.ai) : null) : null,
+    checked ? h('button', { type: 'button', class: 'btn primary', onclick: nextTF }, last ? 'Rodyti rezultatą' : 'Toliau') : null
+  ].filter(Boolean));
+}
+
+function pickTF(bool) {
+  const t = tf;
+  if (!t || t.checked) return;
+  const d = deckById(t.deckId);
+  const prop = t.props[t.i];
+  const c = d && d.cards.find(x => x.id === prop.id);
+  t.checked = true;
+  t.picked = bool;
+  const ok = bool === prop.isTrue;
+  if (c) c.known = ok;
+  if (ok) t.correct++;
+  else {
+    t.wrong.push({ id: prop.id, propText: prop.text, propImg: prop.img, isTrue: prop.isTrue });
+    if (c) c.miss = (c.miss || 0) + 1;
+  }
+  save();
+  renderTF();
+}
+
+function nextTF() {
+  const t = tf;
+  if (!t || !t.checked) return;
+  t.i++;
+  t.checked = false;
+  t.picked = null;
+  renderTF();
+  window.scrollTo(0, 0);
+}
+
+function renderTFResult(root, d) {
+  const t = tf;
+  const total = t.ids.length;
+  const pct = total ? Math.round((t.correct / total) * 100) : 0;
+  const wrongIds = t.wrong.map(x => x.id);
+  root.replaceChildren(
+    h('div', { class: 'bar' }, h('button', { type: 'button', class: 'btn ghost', onclick: () => { tf = null; backToDeck(t.deckId); } }, '‹ Kaladė')),
+    h('h1', {}, wrongIds.length ? 'Baigta' : 'Nepriekaištingai!'),
+    h('p', { class: 'sum-stats' }, `Teisingai atsakyta ${t.correct} iš ${total} (${pct}%).`),
+    h('div', { class: 'progress', 'aria-hidden': 'true' },
+      h('span', { style: `display:block;height:100%;width:${pct}%;background:var(--yes)` })),
+    h('div', { class: 'sum-actions' },
+      wrongIds.length ? h('button', { type: 'button', class: 'btn primary', onclick: () => startTF(t.deckId, wrongIds) }, `Kartoti klaidas (${wrongIds.length})`) : null,
+      h('button', { type: 'button', class: wrongIds.length ? 'btn' : 'btn primary', onclick: () => startTF(t.deckId) }, 'Iš naujo (visos kortelės)'),
+      h('button', { type: 'button', class: 'btn ghost', onclick: () => { tf = null; backToDeck(t.deckId); } }, 'Baigti')));
+  if (wrongIds.length) {
+    const ul = h('ul', { class: 'sumlist' });
+    for (const x of t.wrong) {
+      const c = d.cards.find(y => y.id === x.id);
+      if (!c) continue;
+      ul.append(h('li', {},
+        h('div', { class: 'ctext' },
+          c.q ? h('div', { class: 'cq' }, c.q) : null,
+          imgEl(c.qi),
+          h('div', { class: 'wrong-a' }, `Rodyta: ${x.propText || ''}${x.isTrue ? ' (buvo teisybė)' : ' (buvo melas)'}`, imgEl(x.propImg)),
+          h('div', { class: 'right-a' }, `Teisingas atsakymas: ${c.a || ''}`, imgEl(c.ai)))));
+    }
+    root.append(h('h2', {}, `Klaidos (${wrongIds.length})`), ul);
+  }
+}
+
+document.addEventListener('keydown', e => {
+  if (current !== 'tf' || !tf || tf.i >= tf.ids.length || e.target.matches('input,textarea')) return;
+  if (!tf.checked) {
+    if (e.key === 't' || e.key === 'T' || e.key === '1' || e.key === 'ArrowLeft') { e.preventDefault(); pickTF(true); }
+    else if (e.key === 'n' || e.key === 'N' || e.key === '2' || e.key === 'ArrowRight') { e.preventDefault(); pickTF(false); }
+  } else if (e.key === 'Enter' || e.key === ' ') {
+    e.preventDefault();
+    nextTF();
+  }
+});
+
+/* ---------- Priartinimo (zoom) blokavimas ---------- */
+for (const ev of ['gesturestart', 'gesturechange', 'gestureend']) {
+  document.addEventListener(ev, e => e.preventDefault(), { passive: false });
+}
+document.addEventListener('touchmove', e => { if (e.touches.length > 1) e.preventDefault(); }, { passive: false });
+document.addEventListener('dblclick', e => { if (!e.target.closest('input,textarea')) e.preventDefault(); });
+
+/* ---------- Pradžia ---------- */
+(async () => {
+  try { if (navigator.storage && navigator.storage.persist) navigator.storage.persist(); } catch (e) {}
+  state = await loadState();
+  applyTheme(state.theme || 'light');
+  go('home');
+})();
+})();
+</script>
+</body>
+</html>
